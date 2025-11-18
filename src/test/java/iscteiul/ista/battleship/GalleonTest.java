@@ -1,66 +1,178 @@
 package iscteiul.ista.battleship;
 
-import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Nested;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 @DisplayName("Testes para a classe Galleon")
 class GalleonTest {
 
-    private Galleon galleon;
-    private Position position;
-
-    @BeforeEach
-    void setUp() {
-        position = new Position(5, 5);
-        galleon = new Galleon(Compass.NORTH, position);
-    }
-
-    @Test
-    @DisplayName("Criar galeão com sucesso")
-    void testCreateGalleon() {
-        assertNotNull(galleon);
-        assertEquals(5, galleon.getSize());
-    }
-
-    @Test
-    @DisplayName("Verificar categoria do galeão")
-    void testGetCategory() {
-        assertEquals("Galeao", galleon.getCategory()); // Ajuste conforme retorna
-    }
-
-    @Test
-    @DisplayName("Verificar posição inicial")
-    void testGetPosition() {
-        assertEquals(position, galleon.getPosition());
-    }
-
-    @Test
-    @DisplayName("Verificar orientação")
-    void testGetBearing() {
-        assertEquals(Compass.NORTH, galleon.getBearing());
-    }
+    // ---------- Criação e estado inicial ----------
 
     @Nested
-    @DisplayName("Testes de ocupação de posições")
-    class OccupationTests {
+    @DisplayName("Criação do Galeão")
+    class CreationTests {
 
         @Test
-        @DisplayName("Galeão ocupa posição inicial")
-        void testOccupiesInitialPosition() {
-            assertTrue(galleon.occupies(position));
+        @DisplayName("Criar galeão com sucesso e tamanho correto")
+        void testCreateGalleon() {
+            Galleon g = new Galleon(Compass.NORTH, new Position(5, 5));
+
+            assertNotNull(g);
+            assertEquals(5, g.getSize());
+            assertEquals("Galeao", g.getCategory());
         }
 
         @Test
-        @DisplayName("Galeão não ocupa posição fora do seu alcance")
-        void testDoesNotOccupyDistantPosition() {
-            Position distant = new Position(0, 0);
-            assertFalse(galleon.occupies(distant));
+        @DisplayName("Galeão guarda bearing e posição inicial")
+        void testInitialState() {
+            Position pos = new Position(4, 4);
+            Galleon g = new Galleon(Compass.SOUTH, pos);
+
+            assertEquals(pos, g.getPosition());
+            assertEquals(Compass.SOUTH, g.getBearing());
+        }
+
+        @Test
+        @DisplayName("Falha ao criar galeão com bearing null (AssertionError)")
+        void testNullBearingThrows() {
+            Position pos = new Position(0, 0);
+
+            assertThrows(AssertionError.class,
+                    () -> new Galleon(null, pos));
         }
     }
 
-    @AfterEach
-    void tearDown() {
-        galleon = null;
-        position = null;
+    // ---------- Orientações / posições ----------
+
+    @Nested
+    @DisplayName("Testes de orientação")
+    class OrientationTests {
+
+        @Test
+        @DisplayName("NORTH — galeão ocupa 5 posições em T")
+        void testNorthPositions() {
+            Position pos = new Position(5, 5);
+            Galleon g = new Galleon(Compass.NORTH, pos);
+
+            // fillNorth:
+            // (r,c) (r,c+1) (r,c+2) (r+1,c+1) (r+2,c+1)
+            assertEquals(5, g.getPositions().size());
+
+            assertEquals(new Position(5, 5), g.getPositions().get(0));
+            assertEquals(new Position(5, 6), g.getPositions().get(1));
+            assertEquals(new Position(5, 7), g.getPositions().get(2));
+            assertEquals(new Position(6, 6), g.getPositions().get(3));
+            assertEquals(new Position(7, 6), g.getPositions().get(4));
+        }
+
+        @Test
+        @DisplayName("SOUTH — galeão ocupa 5 posições em T invertido")
+        void testSouthPositions() {
+            Position pos = new Position(5, 5);
+            Galleon g = new Galleon(Compass.SOUTH, pos);
+
+            // fillSouth:
+            // (r,c) (r+1,c) (r+2,c-1) (r+2,c) (r+2,c+1)
+            assertEquals(5, g.getPositions().size());
+
+            assertEquals(new Position(5, 5), g.getPositions().get(0));
+            assertEquals(new Position(6, 5), g.getPositions().get(1));
+            assertEquals(new Position(7, 4), g.getPositions().get(2));
+            assertEquals(new Position(7, 5), g.getPositions().get(3));
+            assertEquals(new Position(7, 6), g.getPositions().get(4));
+        }
+
+        @Test
+        @DisplayName("EAST — galeão ocupa 5 posições em forma de T virado")
+        void testEastPositions() {
+            Position pos = new Position(5, 5);
+            Galleon g = new Galleon(Compass.EAST, pos);
+
+            // fillEast:
+            // (r,c), (r+1,c-2), (r+1,c-1), (r+1,c), (r+2,c)
+            assertEquals(5, g.getPositions().size());
+
+            assertEquals(new Position(5, 5), g.getPositions().get(0));
+            assertEquals(new Position(6, 3), g.getPositions().get(1));
+            assertEquals(new Position(6, 4), g.getPositions().get(2));
+            assertEquals(new Position(6, 5), g.getPositions().get(3));
+            assertEquals(new Position(7, 5), g.getPositions().get(4));
+        }
+
+        @Test
+        @DisplayName("WEST — galeão ocupa 5 posições em forma de T virado")
+        void testWestPositions() {
+            Position pos = new Position(5, 5);
+            Galleon g = new Galleon(Compass.WEST, pos);
+
+            // fillWest:
+            // (r,c), (r+1,c), (r+1,c+1), (r+1,c+2), (r+2,c)
+            assertEquals(5, g.getPositions().size());
+
+            assertEquals(new Position(5, 5), g.getPositions().get(0));
+            assertEquals(new Position(6, 5), g.getPositions().get(1));
+            assertEquals(new Position(6, 6), g.getPositions().get(2));
+            assertEquals(new Position(6, 7), g.getPositions().get(3));
+            assertEquals(new Position(7, 5), g.getPositions().get(4));
+        }
+    }
+
+    // ---------- Ocupação e tiros ----------
+
+    @Nested
+    @DisplayName("Testes de ocupação e tiros")
+    class ShootingTests {
+
+        Galleon g;
+        Position origin;
+
+        @BeforeEach
+        void setup() {
+            origin = new Position(5, 5);
+            g = new Galleon(Compass.NORTH, origin);
+        }
+
+        @Test
+        @DisplayName("Galeão ocupa todas as suas posições")
+        void testOccupiesAllPositions() {
+            for (IPosition p : g.getPositions()) {
+                assertTrue(g.occupies(p),
+                        "Deve ocupar " + p);
+            }
+        }
+
+        @Test
+        @DisplayName("Galeão não ocupa posição fora do alcance")
+        void testDoesNotOccupyUnrelatedPosition() {
+            assertFalse(g.occupies(new Position(0, 0)));
+        }
+
+        @Test
+        @DisplayName("Galeão só afunda após 5 tiros certos")
+        void testSinking() {
+            assertTrue(g.stillFloating(), "Deve começar a flutuar");
+
+            // 4 hits → ainda flutua
+            for (int i = 0; i < 4; i++) {
+                g.shoot(g.getPositions().get(i));
+            }
+            assertTrue(g.stillFloating(), "Ainda deve flutuar após 4 hits");
+
+            // 5º hit → afunda
+            g.shoot(g.getPositions().get(4));
+            assertFalse(g.stillFloating(), "Deve afundar após 5 hits");
+        }
+
+        @Test
+        @DisplayName("Tiro falhado não afunda o galeão")
+        void testMissedShot() {
+            g.shoot(new Position(1, 1)); // posição fora do barco
+            assertTrue(g.stillFloating(),
+                    "Tiro falhado não deve afundar o galeão");
+        }
     }
 }
