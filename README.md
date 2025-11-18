@@ -10,3 +10,5 @@ Afonso Rodrigues Alves 111157
 João Miguel Correia 111637
 Alexandre Miguel Costa 111206
 Rui Carvalho111729
+
+Workflow GitHub Actions configurado para correr testes automaticamente.
