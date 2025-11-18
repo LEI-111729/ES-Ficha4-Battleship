@@ -1,67 +1,168 @@
 package iscteiul.ista.battleship;
 
-import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Nested;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 @DisplayName("Testes para a classe Frigate")
 class FrigateTest {
 
-    private Frigate frigate;
-    private Position position;
-
-    @BeforeEach
-    void setUp() {
-        // Inicialização antes de cada teste
-        position = new Position(5, 5);
-        frigate = new Frigate(Compass.NORTH, position);
-    }
-
-    @Test
-    @DisplayName("Criar fragata com sucesso")
-    void testCreateFrigate() {
-        assertNotNull(frigate);
-        assertEquals(4, frigate.getSize());
-    }
-
-    @Test
-    @DisplayName("Verificar categoria da fragata")
-    void testGetCategory() {
-        assertEquals("Fragata", frigate.getCategory());  // ← F maiúsculo
-    }
-
-    @Test
-    @DisplayName("Verificar posição inicial")
-    void testGetPosition() {
-        assertEquals(position, frigate.getPosition());
-    }
-
-    @Test
-    @DisplayName("Verificar orientação")
-    void testGetBearing() {
-        assertEquals(Compass.NORTH, frigate.getBearing());
-    }
+    // ---------- Criação e estado inicial ----------
 
     @Nested
-    @DisplayName("Testes de ocupação de posições")
-    class OccupationTests {
+    @DisplayName("Criação da Fragata")
+    class CreationTests {
 
         @Test
-        @DisplayName("Fragata ocupa posição inicial")
-        void testOccupiesInitialPosition() {
-            assertTrue(frigate.occupies(position));
+        @DisplayName("Criar fragata com sucesso e tamanho correto")
+        void testCreateFrigate() {
+            Frigate f = new Frigate(Compass.NORTH, new Position(5, 5));
+
+            assertNotNull(f);
+            assertEquals(4, f.getSize());
+            assertEquals("Fragata", f.getCategory());
         }
 
         @Test
-        @DisplayName("Fragata não ocupa posição fora do seu alcance")
-        void testDoesNotOccupyDistantPosition() {
-            Position distant = new Position(0, 0);
-            assertFalse(frigate.occupies(distant));
+        @DisplayName("Fragata guarda bearing e posição inicial")
+        void testInitialState() {
+            Position pos = new Position(3, 4);
+            Frigate f = new Frigate(Compass.EAST, pos);
+
+            assertEquals(pos, f.getPosition());
+            assertEquals(Compass.EAST, f.getBearing());
+        }
+
+        @Test
+        @DisplayName("Falha ao criar fragata com bearing null (AssertionError)")
+        void testNullBearingThrows() {
+            Position pos = new Position(0, 0);
+
+            assertThrows(AssertionError.class,
+                    () -> new Frigate(null, pos));
         }
     }
 
-    @AfterEach
-    void tearDown() {
-        frigate = null;
-        position = null;
+    // ---------- Orientações / posições ----------
+
+    @Nested
+    @DisplayName("Testes de orientação")
+    class OrientationTests {
+
+        @Test
+        @DisplayName("NORTH — fragata ocupa 4 posições verticais")
+        void testNorthPositions() {
+            Position pos = new Position(5, 5);
+            Frigate f = new Frigate(Compass.NORTH, pos);
+
+            // (r,c), (r+1,c), (r+2,c), (r+3,c)
+            assertEquals(4, f.getPositions().size());
+
+            assertEquals(new Position(5, 5), f.getPositions().get(0));
+            assertEquals(new Position(6, 5), f.getPositions().get(1));
+            assertEquals(new Position(7, 5), f.getPositions().get(2));
+            assertEquals(new Position(8, 5), f.getPositions().get(3));
+        }
+
+        @Test
+        @DisplayName("SOUTH — fragata ocupa 4 posições verticais")
+        void testSouthPositions() {
+            Position pos = new Position(2, 3);
+            Frigate f = new Frigate(Compass.SOUTH, pos);
+
+            assertEquals(4, f.getPositions().size());
+
+            assertEquals(new Position(2, 3), f.getPositions().get(0));
+            assertEquals(new Position(3, 3), f.getPositions().get(1));
+            assertEquals(new Position(4, 3), f.getPositions().get(2));
+            assertEquals(new Position(5, 3), f.getPositions().get(3));
+        }
+
+        @Test
+        @DisplayName("EAST — fragata ocupa 4 posições horizontais")
+        void testEastPositions() {
+            Position pos = new Position(4, 1);
+            Frigate f = new Frigate(Compass.EAST, pos);
+
+            // (r,c), (r,c+1), (r,c+2), (r,c+3)
+            assertEquals(4, f.getPositions().size());
+
+            assertEquals(new Position(4, 1), f.getPositions().get(0));
+            assertEquals(new Position(4, 2), f.getPositions().get(1));
+            assertEquals(new Position(4, 3), f.getPositions().get(2));
+            assertEquals(new Position(4, 4), f.getPositions().get(3));
+        }
+
+        @Test
+        @DisplayName("WEST — fragata ocupa 4 posições horizontais")
+        void testWestPositions() {
+            Position pos = new Position(7, 3);
+            Frigate f = new Frigate(Compass.WEST, pos);
+
+            assertEquals(4, f.getPositions().size());
+
+            assertEquals(new Position(7, 3), f.getPositions().get(0));
+            assertEquals(new Position(7, 4), f.getPositions().get(1));
+            assertEquals(new Position(7, 5), f.getPositions().get(2));
+            assertEquals(new Position(7, 6), f.getPositions().get(3));
+        }
+    }
+
+    // ---------- Ocupação e tiros ----------
+
+    @Nested
+    @DisplayName("Testes de ocupação e tiros")
+    class ShootingTests {
+
+        Frigate f;
+        Position origin;
+
+        @BeforeEach
+        void setup() {
+            origin = new Position(5, 5);
+            f = new Frigate(Compass.NORTH, origin);
+        }
+
+        @Test
+        @DisplayName("Fragata ocupa todas as suas posições")
+        void testOccupiesAllPositions() {
+            for (IPosition p : f.getPositions()) {
+                assertTrue(f.occupies(p),
+                        "Deve ocupar " + p);
+            }
+        }
+
+        @Test
+        @DisplayName("Fragata não ocupa posição fora do alcance")
+        void testDoesNotOccupyUnrelatedPosition() {
+            assertFalse(f.occupies(new Position(0, 0)));
+        }
+
+        @Test
+        @DisplayName("Fragata só afunda após 4 tiros certos")
+        void testSinking() {
+            assertTrue(f.stillFloating(), "Deve começar a flutuar");
+
+            // 3 hits → ainda flutua
+            for (int i = 0; i < 3; i++) {
+                f.shoot(f.getPositions().get(i));
+            }
+            assertTrue(f.stillFloating(), "Ainda deve flutuar após 3 hits");
+
+            // 4º hit → afunda
+            f.shoot(f.getPositions().get(3));
+            assertFalse(f.stillFloating(), "Deve afundar após 4 hits");
+        }
+
+        @Test
+        @DisplayName("Tiro falhado não afunda a fragata")
+        void testMissedShot() {
+            f.shoot(new Position(1, 1)); // falha
+            assertTrue(f.stillFloating(),
+                    "Tiro falhado não deve afundar a fragata");
+        }
     }
 }
