@@ -82,6 +82,7 @@ class FleetTest {
             assertFalse(fleet.addShip(ship2)); // Deve falhar por estar muito próximo
         }
 
+
         @Test
         @DisplayName("Verificar limite máximo de navios na frota")
         void testFleetSizeLimit() {
@@ -94,6 +95,32 @@ class FleetTest {
             // A frota não deve ter mais que FLEET_SIZE + 1 navios
             assertTrue(fleet.getShips().size() <= IFleet.FLEET_SIZE + 1);
         }
+
+        //NOVOS TESTES
+
+
+
+        @Test
+        @DisplayName("Não permitir adicionar navio fora do tabuleiro - posição y negativa")
+        void testAddShipFailsDueToNegativeY() {
+            // Teste a condição s.getTopMostPos() >= 0
+            IShip ship = new Barge(Compass.NORTH, new Position(5, -1));
+
+            assertFalse(fleet.addShip(ship), "Erro: Navio fora (Y negativo) devia ser rejeitado.");
+        }
+
+        @Test
+        @DisplayName("Não permitir adicionar navio fora do tabuleiro - posição y além do limite")
+        void testAddShipFailsDueToPositiveY() {
+            // Teste a condição s.getBottomMostPos() <= BOARD_SIZE - 1
+            // Assumindo BOARD_SIZE = 10, o limite máximo é 9. Colocamos o navio em Y=10.
+            IShip ship = new Barge(Compass.NORTH, new Position(5, IFleet.BOARD_SIZE));
+
+            assertFalse(fleet.addShip(ship), "Erro: Navio fora (Y positivo) devia ser rejeitado.");
+        }
+
+
+
     }
 
     @Nested
@@ -151,6 +178,32 @@ class FleetTest {
             assertNotNull(floating);
             assertEquals(0, floating.size());
         }
+
+        //NOVO TESTE
+
+
+
+        @Test
+        @DisplayName("Navios não flutuantes devem ser filtrados")
+        void testShipsNotFloatingAreFiltered() {
+            IShip ship1 = new Barge(Compass.NORTH, new Position(0, 0)); // Navio a flutuar
+
+            // MUDAR A POSIÇÃO: Colocamos o segundo navio longe (Ex: 8, 8) para não colidir com o primeiro
+            IShip ship2 = new Barge(Compass.NORTH, new Position(8, 8));
+
+            assertTrue(fleet.addShip(ship1), "Erro: Ship 1 devia ser adicionado."); // PASSOU
+            assertTrue(fleet.addShip(ship2), "Erro: Ship 2 devia ser adicionado."); // AGORA DEVE PASSAR
+
+            // Simular que o ship2 foi abatido (disparo na posição 8,8)
+            ship2.shoot(new Position(8, 8));
+
+            // Verificar se o filtro funciona: deve restar apenas 1 navio (o ship1)
+            List<IShip> floating = fleet.getFloatingShips();
+            assertEquals(1, floating.size(), "Erro: getFloatingShips devia filtrar o navio abatido.");
+        }
+
+
+
     }
 
     @Nested
@@ -232,6 +285,23 @@ class FleetTest {
 
             assertDoesNotThrow(() -> fleet.printFloatingShips());
         }
+
+
+        //NOVO TESTE
+
+
+
+        @Test
+        @DisplayName("printShipsByCategory() deve lançar exceção se categoria for null")
+        void testPrintShipsByCategoryThrowsExceptionForNull() {
+            // O teste verifica que o assert (ramo FALSE) é acionado
+            assertThrows(AssertionError.class, () -> fleet.printShipsByCategory(null),
+                    "Erro: O método devia lançar uma AssertionError para categoria nula.");
+        }
+
+
+
+
     }
 
     @Nested
