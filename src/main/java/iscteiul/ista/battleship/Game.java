@@ -120,8 +120,8 @@ public class Game implements IGame {
     }
 
     private boolean validShot(IPosition pos) {
-        return (pos.getRow() >= 0 && pos.getRow() <= Fleet.BOARD_SIZE && pos.getColumn() >= 0
-                && pos.getColumn() <= Fleet.BOARD_SIZE);
+        return (pos.getRow() >= 0 && pos.getRow() < Fleet.BOARD_SIZE &&
+                pos.getColumn() >= 0 && pos.getColumn() < Fleet.BOARD_SIZE);
     }
 
     private boolean repeatedShot(IPosition pos) {
