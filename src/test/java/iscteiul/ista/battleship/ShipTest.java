@@ -207,4 +207,52 @@ class ShipTest {
         assertNull(unknown);
     }
 
+
+
+    // NOVOS TESTES
+
+
+
+    @Test
+    @DisplayName("Construtor lança exceção se argumentos forem null")
+    void testConstructorAsserts() {
+        // Testa o assert bearing != null
+        assertThrows(AssertionError.class, () -> new Barge(null, new Position(0,0)));
+
+        // Testa o assert pos != null
+        assertThrows(AssertionError.class, () -> new Barge(Compass.NORTH, null));
+    }
+
+    @Test
+    @DisplayName("Métodos lançam exceção com argumentos null")
+    void testMethodsAsserts() {
+        // occupies(null)
+        assertThrows(AssertionError.class, () -> ship.occupies(null));
+
+        // tooCloseTo((IShip)null)
+        assertThrows(AssertionError.class, () -> ship.tooCloseTo((IShip) null));
+
+        // shoot(null)
+        assertThrows(AssertionError.class, () -> ship.shoot(null));
+    }
+
+
+    @Test
+    @DisplayName("getTopMostPos atualiza valor se encontrar posição com row menor (Forçar Ramo)")
+    void testGetTopMostPosUpdates() {
+        // 1. Criar um navio com tamanho > 1 (ex: Caravela, size 2)
+        // Posições normais seriam algo como: (5,5) e (6,5) [South]
+        Ship s = new Caravel(Compass.SOUTH, new Position(5, 5));
+
+        // 2. HACK: Aceder diretamente à lista 'positions' (é protected, o teste consegue ver)
+        // Vamos alterar a segunda posição (índice 1) para ser (0, 5).
+        // Agora a lista é: [(5,5), (0,5)].
+        // O loop começa em (5,5) (top=5).
+        // Na próxima iteração, encontra (0,5). 0 < 5 é TRUE. Entra no if e executa a linha vermelha.
+        s.positions.set(1, new Position(0, 5));
+
+        // 3. Verificar se o metodo apanhou o novo topo (0)
+        assertEquals(0, s.getTopMostPos(), "O TopMost devia ser 0 após a manipulação.");
+    }
+
 }

@@ -230,5 +230,48 @@ class GameTest {
             fleet.addShip(new MockShip(false));
             assertDoesNotThrow(() -> game.printFleet());
         }
+
+        //NOVO TESTE
+
     }
+
+
+
+
+    // NOVA CLASSE DE TESTES
+    @Nested
+    @DisplayName("Testes de Limites do Tabuleiro (validShot)")
+    class BoundaryTests {
+        // Limite superior do tabuleiro (assumindo 10)
+        final int LIMIT = Fleet.BOARD_SIZE;
+
+        @Test
+        @DisplayName("Inválido: Linha negativa")
+        void testInvalidRowNegative() {
+            game.fire(new Position(-1, 5));
+            assertEquals(1, game.getInvalidShots());
+        }
+
+        @Test
+        @DisplayName("Inválido: Linha excessiva")
+        void testInvalidRowTooHigh() {
+            game.fire(new Position(LIMIT, 5)); // Agora com < LIMIT, isto falha corretamente
+            assertEquals(1, game.getInvalidShots());
+        }
+
+        @Test
+        @DisplayName("Inválido: Coluna negativa")
+        void testInvalidColNegative() {
+            game.fire(new Position(5, -1));
+            assertEquals(1, game.getInvalidShots());
+        }
+
+        @Test
+        @DisplayName("Inválido: Coluna excessiva")
+        void testInvalidColTooHigh() {
+            game.fire(new Position(5, LIMIT));
+            assertEquals(1, game.getInvalidShots());
+        }
+    }
+
 }
