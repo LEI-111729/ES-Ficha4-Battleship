@@ -20,6 +20,7 @@ class FleetTest {
     @DisplayName("Testes de criação e inicialização")
     class InitializationTests {
 
+        // TMS-FLT-001
         @Test
         @DisplayName("Criar frota vazia")
         void testCreateEmptyFleet() {
@@ -27,6 +28,7 @@ class FleetTest {
             assertEquals(0, fleet.getShips().size());
         }
 
+        // TMS-FLT-002
         @Test
         @DisplayName("getShips() retorna lista não nula")
         void testGetShipsNotNull() {
@@ -38,6 +40,7 @@ class FleetTest {
     @DisplayName("Testes de adição de navios")
     class AddShipTests {
 
+        // TMS-FLT-003
         @Test
         @DisplayName("Adicionar um navio válido à frota vazia")
         void testAddValidShipToEmptyFleet() {
@@ -46,6 +49,7 @@ class FleetTest {
             assertEquals(1, fleet.getShips().size());
         }
 
+        // TMS-FLT-004
         @Test
         @DisplayName("Adicionar múltiplos navios válidos")
         void testAddMultipleValidShips() {
@@ -57,6 +61,7 @@ class FleetTest {
             assertEquals(2, fleet.getShips().size());
         }
 
+        // TMS-FLT-005
         @Test
         @DisplayName("Não permitir adicionar navio fora do tabuleiro - posição negativa")
         void testAddShipOutsideBoardNegative() {
@@ -65,6 +70,7 @@ class FleetTest {
             assertEquals(0, fleet.getShips().size());
         }
 
+        // TMS-FLT-006
         @Test
         @DisplayName("Não permitir adicionar navio fora do tabuleiro - posição superior ao limite")
         void testAddShipOutsideBoardOverLimit() {
@@ -72,6 +78,7 @@ class FleetTest {
             assertFalse(fleet.addShip(ship));
         }
 
+        // TMS-FLT-007
         @Test
         @DisplayName("Não permitir adicionar navio com risco de colisão")
         void testAddShipWithCollisionRisk() {
@@ -83,6 +90,7 @@ class FleetTest {
         }
 
 
+        // TMS-FLT-008
         @Test
         @DisplayName("Verificar limite máximo de navios na frota")
         void testFleetSizeLimit() {
@@ -100,6 +108,7 @@ class FleetTest {
 
 
 
+        // TMS-FLT-009
         @Test
         @DisplayName("Não permitir adicionar navio fora do tabuleiro - posição y negativa")
         void testAddShipFailsDueToNegativeY() {
@@ -109,6 +118,7 @@ class FleetTest {
             assertFalse(fleet.addShip(ship), "Erro: Navio fora (Y negativo) devia ser rejeitado.");
         }
 
+        // TMS-FLT-010
         @Test
         @DisplayName("Não permitir adicionar navio fora do tabuleiro - posição y além do limite")
         void testAddShipFailsDueToPositiveY() {
@@ -127,6 +137,7 @@ class FleetTest {
     @DisplayName("Testes de busca de navios por categoria")
     class GetShipsLikeTests {
 
+        // TMS-FLT-011
         @Test
         @DisplayName("Buscar navios de uma categoria existente")
         void testGetShipsLikeExistingCategory() {
@@ -138,6 +149,7 @@ class FleetTest {
             assertEquals(2, barges.size());
         }
 
+        // TMS-FLT-012
         @Test
         @DisplayName("Buscar navios de uma categoria inexistente")
         void testGetShipsLikeNonExistingCategory() {
@@ -147,6 +159,7 @@ class FleetTest {
             assertEquals(0, galleons.size());
         }
 
+        // TMS-FLT-013
         @Test
         @DisplayName("Buscar navios em frota vazia")
         void testGetShipsLikeEmptyFleet() {
@@ -160,6 +173,7 @@ class FleetTest {
     @DisplayName("Testes de navios flutuantes")
     class FloatingShipsTests {
 
+        // TMS-FLT-014
         @Test
         @DisplayName("Todos os navios estão flutuando inicialmente")
         void testAllShipsFloatingInitially() {
@@ -171,6 +185,7 @@ class FleetTest {
         }
 
 
+        // TMS-FLT-015
         @Test
         @DisplayName("getFloatingShips() em frota vazia retorna lista vazia")
         void testGetFloatingShipsEmptyFleet() {
@@ -183,6 +198,7 @@ class FleetTest {
 
 
 
+        // TMS-FLT-016
         @Test
         @DisplayName("Navios não flutuantes devem ser filtrados")
         void testShipsNotFloatingAreFiltered() {
@@ -210,6 +226,7 @@ class FleetTest {
     @DisplayName("Testes de localização de navios")
     class ShipAtTests {
 
+        // TMS-FLT-017
         @Test
         @DisplayName("Encontrar navio em posição ocupada")
         void testShipAtOccupiedPosition() {
@@ -222,6 +239,7 @@ class FleetTest {
             assertEquals(ship, foundShip);
         }
 
+        // TMS-FLT-018
         @Test
         @DisplayName("Não encontrar navio em posição vazia")
         void testShipAtEmptyPosition() {
@@ -231,6 +249,7 @@ class FleetTest {
             assertNull(foundShip);
         }
 
+        // TMS-FLT-019
         @Test
         @DisplayName("shipAt() em frota vazia retorna null")
         void testShipAtEmptyFleet() {
@@ -238,6 +257,7 @@ class FleetTest {
             assertNull(foundShip);
         }
 
+        // TMS-FLT-020
         @Test
         @DisplayName("Encontrar navio correto quando há múltiplos navios")
         void testShipAtWithMultipleShips() {
@@ -255,12 +275,14 @@ class FleetTest {
     @DisplayName("Testes de métodos de impressão")
     class PrintMethodsTests {
 
+        // TMS-FLT-021
         @Test
         @DisplayName("printStatus() não lança exceção com frota vazia")
         void testPrintStatusEmptyFleet() {
             assertDoesNotThrow(() -> fleet.printStatus());
         }
 
+        // TMS-FLT-022
         @Test
         @DisplayName("printStatus() não lança exceção com frota populada")
         void testPrintStatusPopulatedFleet() {
@@ -270,6 +292,7 @@ class FleetTest {
             assertDoesNotThrow(() -> fleet.printStatus());
         }
 
+        // TMS-FLT-023
         @Test
         @DisplayName("printShipsByCategory() não lança exceção")
         void testPrintShipsByCategory() {
@@ -278,6 +301,7 @@ class FleetTest {
             assertDoesNotThrow(() -> fleet.printShipsByCategory("Barca"));
         }
 
+        // TMS-FLT-024
         @Test
         @DisplayName("printFloatingShips() não lança exceção")
         void testPrintFloatingShips() {
@@ -291,6 +315,7 @@ class FleetTest {
 
 
 
+        // TMS-FLT-025
         @Test
         @DisplayName("printShipsByCategory() deve lançar exceção se categoria for null")
         void testPrintShipsByCategoryThrowsExceptionForNull() {
@@ -308,6 +333,7 @@ class FleetTest {
     @DisplayName("Testes de método estático printShips")
     class StaticPrintShipsTests {
 
+        // TMS-FLT-026
         @Test
         @DisplayName("printShips() com lista vazia não lança exceção")
         void testPrintShipsEmptyList() {
@@ -315,6 +341,7 @@ class FleetTest {
             assertDoesNotThrow(() -> Fleet.printShips(emptyList));
         }
 
+        // TMS-FLT-027
         @Test
         @DisplayName("printShips() com lista populada não lança exceção")
         void testPrintShipsPopulatedList() {

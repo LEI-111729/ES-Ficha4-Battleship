@@ -7,6 +7,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class CaravelTest {
 
+    // TMS-CAR-001
     @Test
     @DisplayName("Caravel deve ter tamanho 2")
     void testCaravelSize() {
@@ -16,6 +17,7 @@ class CaravelTest {
         assertEquals(2, caravel.getSize());
     }
 
+    // TMS-CAR-002
     @Test
     @DisplayName("Caravel em NORTH ocupa duas posições verticais")
     void testCaravelPositionsNorth() {
@@ -27,6 +29,7 @@ class CaravelTest {
         assertEquals(new Position(3, 5), caravel.getPositions().get(1));
     }
 
+    // TMS-CAR-003
     @Test
     @DisplayName("Caravel em SOUTH ocupa duas posições verticais")
     void testCaravelPositionsSouth() {
@@ -38,6 +41,7 @@ class CaravelTest {
         assertEquals(new Position(5, 1), caravel.getPositions().get(1));
     }
 
+    // TMS-CAR-004
     @Test
     @DisplayName("Caravel em EAST ocupa duas posições horizontais")
     void testCaravelPositionsEast() {
@@ -49,6 +53,7 @@ class CaravelTest {
         assertEquals(new Position(6, 3), caravel.getPositions().get(1));
     }
 
+    // TMS-CAR-005
     @Test
     @DisplayName("Caravel em WEST ocupa duas posições horizontais")
     void testCaravelPositionsWest() {
@@ -60,6 +65,7 @@ class CaravelTest {
         assertEquals(new Position(1, 8), caravel.getPositions().get(1));
     }
 
+    // TMS-CAR-006
     @Test
     @DisplayName("Construtor da Caravel falha se bearing for null")
     void testCaravelNullBearingThrows() {
@@ -69,6 +75,7 @@ class CaravelTest {
                 () -> new Caravel(null, pos));
     }
 
+    // TMS-CAR-007
     @Test
     @DisplayName("Caravel continua a flutuar depois de apenas um tiro certo")
     void testCaravelStillFloatingAfterOneCorrectShot() {
@@ -84,6 +91,7 @@ class CaravelTest {
                 "Depois de apenas um acerto ainda deve estar a flutuar");
     }
 
+    // TMS-CAR-008
     @Test
     @DisplayName("Caravel deixa de flutuar depois de dois tiros certos")
     void testCaravelStopsFloatingAfterTwoCorrectShots() {
@@ -98,6 +106,7 @@ class CaravelTest {
                 "Depois de dois acertos nas posições ocupadas já não deve flutuar");
     }
 
+    // TMS-CAR-009
     @Test
     @DisplayName("Caravel continua a flutuar se o tiro falhar")
     void testCaravelStillFloatingIfShotMisses() {
@@ -110,6 +119,7 @@ class CaravelTest {
                 "Tiro falhado não deve afundar a caravel");
     }
 
+    // TMS-CAR-010
     @Test
     @DisplayName("Caravel guarda categoria, bearing e posição inicial corretamente")
     void testCaravelCategoryBearingAndInitialPosition() {

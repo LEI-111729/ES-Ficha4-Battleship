@@ -13,6 +13,7 @@ class PositionTest {
         position = new Position(5, 5);
     }
 
+    // TMS-POS-001
     @Test
     @DisplayName("Construtor define linha e coluna corretamente")
     void testConstructorAndGetters() {
@@ -22,6 +23,7 @@ class PositionTest {
         assertFalse(position.isHit());
     }
 
+    // TMS-POS-002
     @Test
     @DisplayName("ocupy() muda o estado de ocupado")
     void testOccupy() {
@@ -30,6 +32,7 @@ class PositionTest {
         assertTrue(position.isOccupied());
     }
 
+    // TMS-POS-003
     @Test
     @DisplayName("shoot() muda o estado de atingido (hit)")
     void testShoot() {
@@ -38,6 +41,7 @@ class PositionTest {
         assertTrue(position.isHit());
     }
 
+    // TMS-POS-004
     @Test
     @DisplayName("toString() devolve string formatada corretamente")
     void testToString() {
@@ -47,6 +51,7 @@ class PositionTest {
 
     // --- Testes Críticos para Cobertura de Ramos (Equals) ---
 
+    // TMS-POS-005
     @Test
     @DisplayName("equals: O mesmo objeto (identidade)")
     void testEqualsSameObject() {
@@ -54,6 +59,7 @@ class PositionTest {
         assertTrue(position.equals(position));
     }
 
+    // TMS-POS-006
     @Test
     @DisplayName("equals: Objeto de outro tipo ou null")
     void testEqualsDifferentTypeOrNull() {
@@ -62,6 +68,7 @@ class PositionTest {
         assertFalse(position.equals(null));
     }
 
+    // TMS-POS-007
     @Test
     @DisplayName("equals: Posição com coordenadas diferentes")
     void testEqualsDifferentCoordinates() {
@@ -73,6 +80,7 @@ class PositionTest {
         assertFalse(position.equals(diffCol));
     }
 
+    // TMS-POS-008
     @Test
     @DisplayName("equals: Posição igual (valores iguais)")
     void testEqualsSameCoordinates() {
@@ -80,6 +88,7 @@ class PositionTest {
         assertTrue(position.equals(same));
     }
 
+    // TMS-POS-009
     @Test
     @DisplayName("hashCode: Objetos iguais têm o mesmo hash")
     void testHashCode() {
@@ -89,6 +98,7 @@ class PositionTest {
 
     // --- Testes Críticos para Cobertura de Ramos (isAdjacentTo) ---
 
+    // TMS-POS-010
     @Test
     @DisplayName("isAdjacentTo: Verdadeiro para todas as direções (inclusive diagonais)")
     void testIsAdjacentToTrue() {
@@ -101,6 +111,7 @@ class PositionTest {
         assertTrue(position.isAdjacentTo(new Position(5, 5))); // A própria (distância 0)
     }
 
+    // TMS-POS-011
     @Test
     @DisplayName("isAdjacentTo: Falso para distâncias maiores que 1")
     void testIsAdjacentToFalse() {

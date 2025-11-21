@@ -16,6 +16,7 @@ class GalleonTest {
     @DisplayName("Criação do Galeão")
     class CreationTests {
 
+        // TMS-GAL-001
         @Test
         @DisplayName("Criar galeão com sucesso e tamanho correto")
         void testCreateGalleon() {
@@ -26,6 +27,7 @@ class GalleonTest {
             assertEquals("Galeao", g.getCategory());
         }
 
+        // TMS-GAL-002
         @Test
         @DisplayName("Galeão guarda bearing e posição inicial")
         void testInitialState() {
@@ -36,6 +38,7 @@ class GalleonTest {
             assertEquals(Compass.SOUTH, g.getBearing());
         }
 
+        // TMS-GAL-003
         @Test
         @DisplayName("Falha ao criar galeão com bearing null (AssertionError)")
         void testNullBearingThrows() {
@@ -52,6 +55,7 @@ class GalleonTest {
     @DisplayName("Testes de orientação")
     class OrientationTests {
 
+        // TMS-GAL-004
         @Test
         @DisplayName("NORTH — galeão ocupa 5 posições em T")
         void testNorthPositions() {
@@ -69,6 +73,7 @@ class GalleonTest {
             assertEquals(new Position(7, 6), g.getPositions().get(4));
         }
 
+        // TMS-GAL-005
         @Test
         @DisplayName("SOUTH — galeão ocupa 5 posições em T invertido")
         void testSouthPositions() {
@@ -86,6 +91,7 @@ class GalleonTest {
             assertEquals(new Position(7, 6), g.getPositions().get(4));
         }
 
+        // TMS-GAL-006
         @Test
         @DisplayName("EAST — galeão ocupa 5 posições em forma de T virado")
         void testEastPositions() {
@@ -103,6 +109,7 @@ class GalleonTest {
             assertEquals(new Position(7, 5), g.getPositions().get(4));
         }
 
+        // TMS-GAL-007
         @Test
         @DisplayName("WEST — galeão ocupa 5 posições em forma de T virado")
         void testWestPositions() {
@@ -136,6 +143,7 @@ class GalleonTest {
             g = new Galleon(Compass.NORTH, origin);
         }
 
+        // TMS-GAL-008
         @Test
         @DisplayName("Galeão ocupa todas as suas posições")
         void testOccupiesAllPositions() {
@@ -145,12 +153,14 @@ class GalleonTest {
             }
         }
 
+        // TMS-GAL-009
         @Test
         @DisplayName("Galeão não ocupa posição fora do alcance")
         void testDoesNotOccupyUnrelatedPosition() {
             assertFalse(g.occupies(new Position(0, 0)));
         }
 
+        // TMS-GAL-010
         @Test
         @DisplayName("Galeão só afunda após 5 tiros certos")
         void testSinking() {
@@ -167,6 +177,7 @@ class GalleonTest {
             assertFalse(g.stillFloating(), "Deve afundar após 5 hits");
         }
 
+        // TMS-GAL-011
         @Test
         @DisplayName("Tiro falhado não afunda o galeão")
         void testMissedShot() {

@@ -146,6 +146,7 @@ class GameTest {
     @DisplayName("Testes ao método fire()")
     class FireTests {
 
+        // TMS-GAM-001
         @Test
         @DisplayName("1️⃣ Invalid shot incrementa countInvalidShots")
         void invalidShot() {
@@ -155,6 +156,7 @@ class GameTest {
             assertEquals(0, game.getHits());
         }
 
+        // TMS-GAM-002
         @Test
         @DisplayName("2️⃣ Repeated shot incrementa countRepeatedShots")
         void repeatedShot() {
@@ -164,6 +166,7 @@ class GameTest {
             assertEquals(1, game.getRepeatedShots());
         }
 
+        // TMS-GAM-003
         @Test
         @DisplayName("3️⃣ Valid shot sem barco não incrementa hits")
         void validShotNoShip() {
@@ -176,6 +179,7 @@ class GameTest {
             assertEquals(1, game.getShots().size());
         }
 
+        // TMS-GAM-004
         @Test
         @DisplayName("4️⃣ Valid shot com barco mas sem afundar incrementa hits")
         void hitShipButNotSunk() {
@@ -189,6 +193,7 @@ class GameTest {
             assertEquals(0, game.getSunkShips());
         }
 
+        // TMS-GAM-005
         @Test
         @DisplayName("5️⃣ Valid shot com barco afundado incrementa sinks e retorna o ship")
         void hitShipAndSink() {
@@ -208,6 +213,7 @@ class GameTest {
     @DisplayName("Testes a métodos de contagem e estado")
     class CountTests {
 
+        // TMS-GAM-006
         @Test
         @DisplayName("getRemainingShips devolve número correto")
         void remainingShips() {
@@ -215,6 +221,7 @@ class GameTest {
             assertEquals(3, game.getRemainingShips());
         }
 
+        // TMS-GAM-007
         @Test
         @DisplayName("printValidShots corre sem lançar exceções")
         void printValidShotsRuns() {
@@ -223,6 +230,7 @@ class GameTest {
             assertDoesNotThrow(() -> game.printValidShots());
         }
 
+        // TMS-GAM-008
         @Test
         @DisplayName("printFleet corre sem lançar exceções")
         void printFleetRuns() {
@@ -245,6 +253,7 @@ class GameTest {
         // Limite superior do tabuleiro (assumindo 10)
         final int LIMIT = Fleet.BOARD_SIZE;
 
+        // TMS-GAM-009
         @Test
         @DisplayName("Inválido: Linha negativa")
         void testInvalidRowNegative() {
@@ -252,6 +261,7 @@ class GameTest {
             assertEquals(1, game.getInvalidShots());
         }
 
+        // TMS-GAM-010
         @Test
         @DisplayName("Inválido: Linha excessiva")
         void testInvalidRowTooHigh() {
@@ -259,6 +269,7 @@ class GameTest {
             assertEquals(1, game.getInvalidShots());
         }
 
+        // TMS-GAM-011
         @Test
         @DisplayName("Inválido: Coluna negativa")
         void testInvalidColNegative() {
@@ -266,6 +277,7 @@ class GameTest {
             assertEquals(1, game.getInvalidShots());
         }
 
+        // TMS-GAM-012
         @Test
         @DisplayName("Inválido: Coluna excessiva")
         void testInvalidColTooHigh() {
