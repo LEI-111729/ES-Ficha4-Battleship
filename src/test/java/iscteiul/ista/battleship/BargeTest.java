@@ -7,6 +7,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class BargeTest {
 
+    // TMS-BAR-001
     @Test
     @DisplayName("Barge deve ter tamanho 1")
     void testBargeSize() {
@@ -20,6 +21,7 @@ class BargeTest {
         assertEquals(1, barge.getSize());
     }
 
+    // TMS-BAR-002
     @Test
     @DisplayName("Barge deve ocupar apenas a posição inicial")
     void testBargePosition() {
@@ -35,6 +37,7 @@ class BargeTest {
         assertEquals(6, barge.getPositions().get(0).getColumn());
     }
 
+    // TMS-BAR-003
     @Test
     @DisplayName("Barge deixa de flutuar depois de levar um tiro na posição certa")
     void testBargeStopsFloatingAfterShootOnPosition() {
@@ -52,6 +55,7 @@ class BargeTest {
         assertFalse(barge.stillFloating(), "Depois do tiro certo a barge já não deve estar a flutuar");
     }
 
+    // TMS-BAR-004
     @Test
     @DisplayName("Barge continua a flutuar se o tiro falhar")
     void testBargeStillFloatingIfShotMisses() {
@@ -67,5 +71,3 @@ class BargeTest {
     }
 
 }
-
-

@@ -28,6 +28,7 @@ class ShipTest {
     }
 
     // ----------------------------------------------------------------------
+    // TMS-SHP-001
     @Test
     @DisplayName("buildShip cria um barco com categoria, bearing e posição válidos")
     void buildShipCreatesValidShip() {
@@ -37,6 +38,7 @@ class ShipTest {
     }
 
     // ----------------------------------------------------------------------
+    // TMS-SHP-002
     @Test
     @DisplayName("getCategory devolve a categoria do barco")
     void getCategory() {
@@ -46,6 +48,7 @@ class ShipTest {
     }
 
     // ----------------------------------------------------------------------
+    // TMS-SHP-003
     @Test
     @DisplayName("getPositions devolve todas as posições ocupadas pelo barco")
     void getPositions() {
@@ -60,6 +63,7 @@ class ShipTest {
     }
 
     // ----------------------------------------------------------------------
+    // TMS-SHP-004
     @Test
     @DisplayName("getPosition devolve a posição inicial do barco")
     void getPosition() {
@@ -67,6 +71,7 @@ class ShipTest {
     }
 
     // ----------------------------------------------------------------------
+    // TMS-SHP-005
     @Test
     @DisplayName("getBearing devolve o bearing correto do barco")
     void getBearing() {
@@ -74,6 +79,7 @@ class ShipTest {
     }
 
     // ----------------------------------------------------------------------
+    // TMS-SHP-006
     @Test
     @DisplayName("Um barco novo ainda está a flutuar")
     void stillFloatingWhenNew() {
@@ -81,6 +87,7 @@ class ShipTest {
     }
 
     // ----------------------------------------------------------------------
+    // TMS-SHP-007
     @Test
     @DisplayName("getTopMostPos é o menor row das posições do barco")
     void getTopMostPos() {
@@ -90,6 +97,7 @@ class ShipTest {
         }
     }
 
+    // TMS-SHP-008
     @Test
     @DisplayName("getBottomMostPos é o maior row das posições do barco")
     void getBottomMostPos() {
@@ -99,6 +107,7 @@ class ShipTest {
         }
     }
 
+    // TMS-SHP-009
     @Test
     @DisplayName("getLeftMostPos é o menor column das posições do barco")
     void getLeftMostPos() {
@@ -108,6 +117,7 @@ class ShipTest {
         }
     }
 
+    // TMS-SHP-010
     @Test
     @DisplayName("getRightMostPos é o maior column das posições do barco")
     void getRightMostPos() {
@@ -118,6 +128,7 @@ class ShipTest {
     }
 
     // ----------------------------------------------------------------------
+    // TMS-SHP-011
     @Test
     @DisplayName("occupies devolve true para posições ocupadas e false para posições afastadas")
     void occupies() {
@@ -129,6 +140,7 @@ class ShipTest {
     }
 
     // ----------------------------------------------------------------------
+    // TMS-SHP-012
     @Test
     @DisplayName("tooCloseTo(IShip) devolve true para barcos próximos e false para barcos afastados")
     void tooCloseTo() {
@@ -139,6 +151,7 @@ class ShipTest {
         assertFalse(ship.tooCloseTo(far));
     }
 
+    // TMS-SHP-013
     @Test
     @DisplayName("tooCloseTo(IPosition) devolve true para posições adjacentes")
     void testTooCloseTo() {
@@ -150,6 +163,7 @@ class ShipTest {
     }
 
     // ----------------------------------------------------------------------
+    // TMS-SHP-014
     @Test
     @DisplayName("shoot marca como atingida a posição do barco alvo")
     void shoot() {
@@ -162,6 +176,7 @@ class ShipTest {
     }
 
     // ----------------------------------------------------------------------
+    // TMS-SHP-015
     @Test
     @DisplayName("toString devolve uma representação textual não vazia")
     void testToString() {
@@ -171,6 +186,7 @@ class ShipTest {
     }
 
     // ----------------------------------------------------------------------
+    // TMS-SHP-016
     @Test
     @DisplayName("buildShip cria corretamente cada tipo concreto de barco")
     void buildShipCreatesAllConcreteTypes() {
@@ -200,6 +216,7 @@ class ShipTest {
         assertTrue(galeao instanceof Galleon);
     }
 
+    // TMS-SHP-017
     @Test
     @DisplayName("buildShip devolve null para tipo de barco desconhecido")
     void buildShipReturnsNullForUnknownKind() {
@@ -213,6 +230,7 @@ class ShipTest {
 
 
 
+    // TMS-SHP-018
     @Test
     @DisplayName("Construtor lança exceção se argumentos forem null")
     void testConstructorAsserts() {
@@ -223,6 +241,7 @@ class ShipTest {
         assertThrows(AssertionError.class, () -> new Barge(Compass.NORTH, null));
     }
 
+    // TMS-SHP-019
     @Test
     @DisplayName("Métodos lançam exceção com argumentos null")
     void testMethodsAsserts() {
@@ -237,6 +256,7 @@ class ShipTest {
     }
 
 
+    // TMS-SHP-020
     @Test
     @DisplayName("getTopMostPos atualiza valor se encontrar posição com row menor (Forçar Ramo)")
     void testGetTopMostPosUpdates() {

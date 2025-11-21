@@ -7,6 +7,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class CarrackTest {
 
+    // TMS-CRK-001
     @Test
     @DisplayName("Carrack deve ter tamanho 3")
     void testCarrackSize() {
@@ -14,6 +15,7 @@ class CarrackTest {
         assertEquals(3, carrack.getSize());
     }
 
+    // TMS-CRK-002
     @Test
     @DisplayName("Carrack em NORTH ocupa três posições verticais")
     void testCarrackPositionsNorth() {
@@ -29,6 +31,7 @@ class CarrackTest {
         assertEquals(2, carrack.getPositions().get(2).getColumn());
     }
 
+    // TMS-CRK-003
     @Test
     @DisplayName("Carrack em SOUTH ocupa três posições verticais")
     void testCarrackPositionsSouth() {
@@ -44,6 +47,7 @@ class CarrackTest {
         assertEquals(1, carrack.getPositions().get(2).getColumn());
     }
 
+    // TMS-CRK-004
     @Test
     @DisplayName("Carrack em EAST ocupa três posições horizontais")
     void testCarrackPositionsEast() {
@@ -59,6 +63,7 @@ class CarrackTest {
         assertEquals(6, carrack.getPositions().get(2).getColumn());
     }
 
+    // TMS-CRK-005
     @Test
     @DisplayName("Carrack em WEST ocupa três posições horizontais")
     void testCarrackPositionsWest() {
@@ -74,6 +79,7 @@ class CarrackTest {
         assertEquals(5, carrack.getPositions().get(2).getColumn());
     }
 
+    // TMS-CRK-006
     @Test
     @DisplayName("Carrack continua a flutuar após um tiro certo")
     void testCarrackStillFloatingAfterOneHit() {
@@ -85,6 +91,7 @@ class CarrackTest {
                 "Depois de um hit ainda deve flutuar");
     }
 
+    // TMS-CRK-007
     @Test
     @DisplayName("Carrack continua a flutuar após dois tiros certos")
     void testCarrackStillFloatingAfterTwoHits() {
@@ -98,6 +105,7 @@ class CarrackTest {
                 "Depois de dois hits ainda deve flutuar");
     }
 
+    // TMS-CRK-008
     @Test
     @DisplayName("Carrack deixa de flutuar após três tiros certos")
     void testCarrackStopsFloatingAfterThreeHits() {
@@ -112,6 +120,7 @@ class CarrackTest {
                 "Depois de três hits deve afundar");
     }
 
+    // TMS-CRK-009
     @Test
     @DisplayName("Carrack continua a flutuar se o tiro falhar")
     void testCarrackMissedShotStillFloating() {
@@ -124,6 +133,7 @@ class CarrackTest {
                 "Tiro falhado não deve afundar o barco");
     }
 
+    // TMS-CRK-010
     @Test
     @DisplayName("Carrack guarda categoria, bearing e posição inicial corretamente")
     void testCarrackCategoryBearingInitialPosition() {

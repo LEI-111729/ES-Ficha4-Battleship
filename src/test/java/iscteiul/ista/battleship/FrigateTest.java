@@ -16,6 +16,7 @@ class FrigateTest {
     @DisplayName("Criação da Fragata")
     class CreationTests {
 
+        // TMS-FRG-001
         @Test
         @DisplayName("Criar fragata com sucesso e tamanho correto")
         void testCreateFrigate() {
@@ -26,6 +27,7 @@ class FrigateTest {
             assertEquals("Fragata", f.getCategory());
         }
 
+        // TMS-FRG-002
         @Test
         @DisplayName("Fragata guarda bearing e posição inicial")
         void testInitialState() {
@@ -36,6 +38,7 @@ class FrigateTest {
             assertEquals(Compass.EAST, f.getBearing());
         }
 
+        // TMS-FRG-003
         @Test
         @DisplayName("Falha ao criar fragata com bearing null (AssertionError)")
         void testNullBearingThrows() {
@@ -52,6 +55,7 @@ class FrigateTest {
     @DisplayName("Testes de orientação")
     class OrientationTests {
 
+        // TMS-FRG-004
         @Test
         @DisplayName("NORTH — fragata ocupa 4 posições verticais")
         void testNorthPositions() {
@@ -67,6 +71,7 @@ class FrigateTest {
             assertEquals(new Position(8, 5), f.getPositions().get(3));
         }
 
+        // TMS-FRG-005
         @Test
         @DisplayName("SOUTH — fragata ocupa 4 posições verticais")
         void testSouthPositions() {
@@ -81,6 +86,7 @@ class FrigateTest {
             assertEquals(new Position(5, 3), f.getPositions().get(3));
         }
 
+        // TMS-FRG-006
         @Test
         @DisplayName("EAST — fragata ocupa 4 posições horizontais")
         void testEastPositions() {
@@ -96,6 +102,7 @@ class FrigateTest {
             assertEquals(new Position(4, 4), f.getPositions().get(3));
         }
 
+        // TMS-FRG-007
         @Test
         @DisplayName("WEST — fragata ocupa 4 posições horizontais")
         void testWestPositions() {
@@ -126,6 +133,7 @@ class FrigateTest {
             f = new Frigate(Compass.NORTH, origin);
         }
 
+        // TMS-FRG-008
         @Test
         @DisplayName("Fragata ocupa todas as suas posições")
         void testOccupiesAllPositions() {
@@ -135,12 +143,14 @@ class FrigateTest {
             }
         }
 
+        // TMS-FRG-009
         @Test
         @DisplayName("Fragata não ocupa posição fora do alcance")
         void testDoesNotOccupyUnrelatedPosition() {
             assertFalse(f.occupies(new Position(0, 0)));
         }
 
+        // TMS-FRG-010
         @Test
         @DisplayName("Fragata só afunda após 4 tiros certos")
         void testSinking() {
@@ -157,6 +167,7 @@ class FrigateTest {
             assertFalse(f.stillFloating(), "Deve afundar após 4 hits");
         }
 
+        // TMS-FRG-011
         @Test
         @DisplayName("Tiro falhado não afunda a fragata")
         void testMissedShot() {

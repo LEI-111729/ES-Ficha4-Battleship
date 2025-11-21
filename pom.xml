@@ -15,6 +15,7 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.release>21</maven.compiler.release>
+        <allure.version>2.29.0</allure.version>
     </properties>
 
     <dependencyManagement>
@@ -38,13 +39,22 @@
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-core</artifactId>
-            <version>2.25.2</version> <scope>compile</scope>
+            <version>2.25.2</version>
+            <scope>compile</scope>
         </dependency>
-    </dependencies> <reporting>
-    <plugins>
-        <plugin>
-            <artifactId>maven-project-info-reports-plugin</artifactId>
-        </plugin>
-    </plugins>
-</reporting>
+        <!-- Allure Java Commons para gestão de anotações -->
+        <dependency>
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-java-commons</artifactId>
+            <version>${allure.version}</version>
+        </dependency>
+    </dependencies>
+
+    <reporting>
+        <plugins>
+            <plugin>
+                <artifactId>maven-project-info-reports-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </reporting>
 </project>
