@@ -8,7 +8,7 @@ _(Para efeitos de cobertura, não considerar testes sobre a classe Tasks)_
 
 ---
 
-## BargeTest
+## BargeTest 
 
 * **TMS-BAR-001** - testBargeSize
 * **TMS-BAR-002** - testBargePosition
