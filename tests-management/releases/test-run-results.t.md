@@ -51,11 +51,11 @@
 - **Status:** ✅ Executado
 - **Data de Execução:** 21/11/2024
 - **Classes Testadas:**
-    - ✅ BargeTest (4/4 testes passaram - 0.066s)
-    - ✅ CaravelTest (10/10 testes passaram - 0.029s)
-    - ✅ CarrackTest (10/10 testes passaram - 0.025s)
-    - ✅ FrigateTest (11/11 testes passaram - 0.041s)
-    - ✅ GalleonTest (11/11 testes passaram - 0.060s)
+    - ✅ BargeTest (4/4 testes passaram - 0.066s) 
+    - ✅ CaravelTest (10/10 testes passaram - 0.029s) 
+    - ✅ CarrackTest (10/10 testes passaram - 0.025s) 
+    - ✅ FrigateTest (11/11 testes passaram - 0.041s) 
+    - ✅ GalleonTest (11/11 testes passaram - 0.060s) 
 - **Observações:**
     - Todos os tipos de navios testados com sucesso
     - Cobertura individual: Barge 100%, Caravel 90%, Carrack 100%, Frigate 100%, Galleon 93%
@@ -97,11 +97,11 @@
 ### Cobertura por Pacote
 - **iscteiul.ista.battleship:** 76% branch, 74% line, 90% method
 - **Classes com 100% cobertura:**
-    - Barge: 100% branch
-    - Carrack: 100% branch
-    - Compass: 100% branch
+    - Barge: 100% branch 
+    - Carrack: 100% branch 
+    - Compass: 100% branch 
     - Fleet: 97% branch
-    - Frigate: 100% branch
+    - Frigate: 100% branch 
     - IFleet: 100% branch
     - IGame: 100% branch
     - IPosition: 100% branch
@@ -114,21 +114,21 @@
 
 ## Detalhes por Classe de Teste
 
-### BargeTest (TMS-BAR-001 a TMS-BAR-004)
+### BargeTest (TMS-BAR-001 a TMS-BAR-004) - Realizado por @111206
 - **Status:** ✅ Passou
 - **Testes:** 4/4
 - **Duração:** 66 ms
 - **Cobertura:** 100% branch
 - **Notas:** Todos os testes de Barge passaram. Cobertura completa alcançada.
 
-### CaravelTest (TMS-CAR-001 a TMS-CAR-010)
+### CaravelTest (TMS-CAR-001 a TMS-CAR-010) - Realizado por @111206
 - **Status:** ✅ Passou
 - **Testes:** 10/10
 - **Duração:** 29 ms
 - **Cobertura:** 90% branch (9/10)
 - **Notas:** Validações de orientação funcionando. 1 branch não coberto.
 
-### CarrackTest (TMS-CRK-001 a TMS-CRK-010)
+### CarrackTest (TMS-CRK-001 a TMS-CRK-010) - Realizado por @111206
 - **Status:** ✅ Passou
 - **Testes:** 10/10
 - **Duração:** 25 ms
@@ -204,7 +204,7 @@
 - Todos os 145 testes executam rapidamente (< 7s total)
 - Código bem estruturado e testável
 - Uso adequado de nested classes e testes parametrizados
-
+- @111206 ajudou a melhorar a cobertura do Frigate e do Galleon
 ---
 
 ## Comandos Executados
