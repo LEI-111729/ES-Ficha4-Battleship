@@ -1,305 +1,551 @@
 # Test Run - Resultados das Operações Executadas
 
 ## Informação da Release
-
-**ID:** TMS-RUN-001  
-**Data:** 21/11/2024  
-**Versão:** 1.0-SNAPSHOT  
+**ID:** TMS-RUN-001
+**Data:** 21/11/2025
+**Versão:** 1.0-FINAL
 **Projeto:** ES-Ficha4-Battleship
 
 ---
 
-## Resumo da Execução
+## 1. Relatórios de Qualidade
 
-**Status Geral:** ✅ Concluído com Sucesso  
-**Ambiente:** Maven 3.x + JUnit 5 + JaCoCo + IntelliJ IDEA  
-**Data de Execução:** 21/11/2024 10:31:48 UTC
-
----
-
-## Operações Executadas
-
-### TMS-CHK-001: Relatório de cobertura de código (Branch Coverage)
+### TMS-CHK-001: Relatório de Cobertura de Código (Branch)
 - **Status:** ✅ Executado
-- **Data de Execução:** 21/11/2024
-- **Cobertura Alcançada:** 76% (171/223 branches cobertos)
-- **Observações:**
-    - Branch coverage de 76% alcançado
-    - Classe Tasks excluída da análise (0% conforme especificação)
-    - Objetivo de cobertura próxima de 100% para classes principais
+- **Responsável:** @111206 (Alexandre) / @111157 (Afonso) / @111637 (João)
+- **Resultado:** **90% Branch Coverage*** (Inicial)
+- **Nota:** *O valor reflete a cobertura das classes de domínio, excluindo a classe `Tasks` (UI) conforme especificação do guião. (Cobertura bruta com Tasks seria ~70%).
 
-### TMS-CHK-002: Relatório de cobertura global final (HTML)
+### TMS-CHK-002: Relatório de Cobertura Global (HTML)
 - **Status:** ✅ Executado
-- **Data de Execução:** 21/11/2024
+- **Responsável:** @111729 (Rui)
 - **Localização:** `reports/tests/cobertura-global-final.html`
-- **Observações:**
-    - Relatório gerado com sucesso via IntelliJ Coverage
-    - Visualização disponível no IntelliJ e em HTML
-
-### TMS-CHK-003: Testes unitários das classes de domínio
-- **Status:** ✅ Executado
-- **Data de Execução:** 21/11/2024
-- **Testes Executados:** 145/145
-- **Testes Passou:** 145
-- **Testes Falhados:** 0
-- **Observações:**
-    - Todos os testes passaram com sucesso
-    - Tempo total de execução: 6.824s
-    - 0 testes ignorados (skipped)
-
-### TMS-CHK-004: Testes unitários dos tipos de navios
-- **Status:** ✅ Executado
-- **Data de Execução:** 21/11/2024
-- **Classes Testadas:**
-    - ✅ BargeTest (4/4 testes passaram - 0.066s) 
-    - ✅ CaravelTest (10/10 testes passaram - 0.029s) 
-    - ✅ CarrackTest (10/10 testes passaram - 0.025s) 
-    - ✅ FrigateTest (11/11 testes passaram - 0.041s) 
-    - ✅ GalleonTest (11/11 testes passaram - 0.060s) 
-- **Observações:**
-    - Todos os tipos de navios testados com sucesso
-    - Cobertura individual: Barge 100%, Caravel 90%, Carrack 100%, Frigate 100%, Galleon 93%
-
-### TMS-CHK-005: Testes de validação de regras de negócio
-- **Status:** ✅ Executado
-- **Data de Execução:** 21/11/2024
-- **Classes Testadas:**
-    - ✅ FleetTest (27/27 testes passaram - 0.095s)
-    - ✅ GameTest (12/12 testes passaram - 0.075s)
-    - ✅ PositionTest (11/11 testes passaram - 0.030s)
-    - ✅ ShipTest (20/20 testes passaram - 0.033s)
-    - ✅ CompassTest (29/29 testes passaram - 0.307s)
-- **Observações:**
-    - Regras de colisão validadas corretamente
-    - Limites do tabuleiro verificados
-    - Lógica de jogo funcionando perfeitamente
-    - Cobertura individual: Fleet 97%, Game 96%, Position 100%, Ship 100%, Compass 100%
+- **Resultado:** **~98% Branch Coverage** (Final)
+- **Nota:** Objetivo de "cobertura quase total" atingido após correção de bugs lógicos e adição de testes de limite. (Exclui `Tasks`).
 
 ---
 
-## Estatísticas de Testes
+## 2. Execução de Testes Unitários
 
-### Resumo Geral
+### 👤 Execução A - Alexandre Costa (@111206)
+*(Tempo Total: 165 ms | Relatório: `Test Results - 111206.html`)*
+
+#### BargeTest (0 ms) - ✅ Passou (4/4)
+- [x] **TMS-BAR-001** - testBargeSize ✅ (Passou)
+- [x] **TMS-BAR-002** - testBargePosition ✅ (Passou)
+- [x] **TMS-BAR-003** - testBargeStopsFloatingAfterShootOnPosition ✅ (Passou)
+- [x] **TMS-BAR-004** - testBargeStillFloatingIfShotMisses ✅ (Passou)
+
+#### CaravelTest (2 ms) - ✅ Passou (10/10)
+- [x] **TMS-CAR-001** - testCaravelSize ✅ (Passou)
+- [x] **TMS-CAR-002** - testCaravelPositionsNorth ✅ (Passou)
+- [x] **TMS-CAR-003** - testCaravelPositionsSouth ✅ (Passou)
+- [x] **TMS-CAR-004** - testCaravelPositionsEast ✅ (Passou)
+- [x] **TMS-CAR-005** - testCaravelPositionsWest ✅ (Passou)
+- [x] **TMS-CAR-006** - testCaravelNullBearingThrows ✅ (Passou)
+- [x] **TMS-CAR-007** - testCaravelStillFloatingAfterOneCorrectShot ✅ (Passou)
+- [x] **TMS-CAR-008** - testCaravelStopsFloatingAfterTwoCorrectShots ✅ (Passou)
+- [x] **TMS-CAR-009** - testCaravelStillFloatingIfShotMisses ✅ (Passou)
+- [x] **TMS-CAR-010** - testCaravelCategoryBearingAndInitialPosition ✅ (Passou)
+
+#### CarrackTest (0 ms) - ✅ Passou (10/10)
+- [x] **TMS-CRK-001** - testCarrackSize ✅ (Passou)
+- [x] **TMS-CRK-002** - testCarrackPositionsNorth ✅ (Passou)
+- [x] **TMS-CRK-003** - testCarrackPositionsSouth ✅ (Passou)
+- [x] **TMS-CRK-004** - testCarrackPositionsEast ✅ (Passou)
+- [x] **TMS-CRK-005** - testCarrackPositionsWest ✅ (Passou)
+- [x] **TMS-CRK-006** - testCarrackStillFloatingAfterOneHit ✅ (Passou)
+- [x] **TMS-CRK-007** - testCarrackStillFloatingAfterTwoHits ✅ (Passou)
+- [x] **TMS-CRK-008** - testCarrackStopsFloatingAfterThreeHits ✅ (Passou)
+- [x] **TMS-CRK-009** - testCarrackMissedShotStillFloating ✅ (Passou)
+- [x] **TMS-CRK-010** - testCarrackCategoryBearingInitialPosition ✅ (Passou)
+
+#### CompassTest (61 ms) - ✅ Passou (29/29)
+- [x] **TMS-CMP-001** - testCharToCompassNorth ✅ (Passou)
+- [x] **TMS-CMP-002** - testCharToCompassSouth ✅ (Passou)
+- [x] **TMS-CMP-003** - testCharToCompassEast ✅ (Passou)
+- [x] **TMS-CMP-004** - testCharToCompassWest ✅ (Passou)
+- [x] **TMS-CMP-005** - testCharToCompassUnknown ✅ (Passou)
+- [x] **TMS-CMP-006** - testCharToCompassParametrized ✅ (Passou)
+- [x] **TMS-CMP-007** - testNorthGetDirection ✅ (Passou)
+- [x] **TMS-CMP-008** - testSouthGetDirection ✅ (Passou)
+- [x] **TMS-CMP-009** - testEastGetDirection ✅ (Passou)
+- [x] **TMS-CMP-010** - testWestGetDirection ✅ (Passou)
+- [x] **TMS-CMP-011** - testUnknownGetDirection ✅ (Passou)
+- [x] **TMS-CMP-012** - testGetDirectionParametrized ✅ (Passou)
+- [x] **TMS-CMP-013** - testNorthToString ✅ (Passou)
+- [x] **TMS-CMP-014** - testSouthToString ✅ (Passou)
+- [x] **TMS-CMP-015** - testEastToString ✅ (Passou)
+- [x] **TMS-CMP-016** - testWestToString ✅ (Passou)
+- [x] **TMS-CMP-017** - testUnknownToString ✅ (Passou)
+- [x] **TMS-CMP-018** - testEnumValuesCount ✅ (Passou)
+- [x] **TMS-CMP-019** - testValueOfNorth ✅ (Passou)
+- [x] **TMS-CMP-020** - testValueOfInvalid ✅ (Passou)
+
+#### FleetTest (23 ms) - ✅ Passou (27/27)
+- [x] **TMS-FLT-001** - testCreateEmptyFleet ✅ (Passou)
+- [x] **TMS-FLT-002** - testGetShipsNotNull ✅ (Passou)
+- [x] **TMS-FLT-003** - testAddValidShipToEmptyFleet ✅ (Passou)
+- [x] **TMS-FLT-004** - testAddMultipleValidShips ✅ (Passou)
+- [x] **TMS-FLT-005** - testAddShipOutsideBoardNegative ✅ (Passou)
+- [x] **TMS-FLT-006** - testAddShipOutsideBoardOverLimit ✅ (Passou)
+- [x] **TMS-FLT-007** - testAddShipWithCollisionRisk ✅ (Passou)
+- [x] **TMS-FLT-008** - testFleetSizeLimit ✅ (Passou)
+- [x] **TMS-FLT-009** - testAddShipFailsDueToNegativeY ✅ (Passou)
+- [x] **TMS-FLT-010** - testAddShipFailsDueToPositiveY ✅ (Passou)
+- [x] **TMS-FLT-011** - testGetShipsLikeExistingCategory ✅ (Passou)
+- [x] **TMS-FLT-012** - testGetShipsLikeNonExistingCategory ✅ (Passou)
+- [x] **TMS-FLT-013** - testGetShipsLikeEmptyFleet ✅ (Passou)
+- [x] **TMS-FLT-014** - testAllShipsFloatingInitially ✅ (Passou)
+- [x] **TMS-FLT-015** - testGetFloatingShipsEmptyFleet ✅ (Passou)
+- [x] **TMS-FLT-016** - testShipsNotFloatingAreFiltered ✅ (Passou)
+- [x] **TMS-FLT-017** - testShipAtOccupiedPosition ✅ (Passou)
+- [x] **TMS-FLT-018** - testShipAtEmptyPosition ✅ (Passou)
+- [x] **TMS-FLT-019** - testShipAtEmptyFleet ✅ (Passou)
+- [x] **TMS-FLT-020** - testShipAtWithMultipleShips ✅ (Passou)
+- [x] **TMS-FLT-021** - testPrintStatusEmptyFleet ✅ (Passou)
+- [x] **TMS-FLT-022** - testPrintStatusPopulatedFleet ✅ (Passou)
+- [x] **TMS-FLT-023** - testPrintShipsByCategory ✅ (Passou)
+- [x] **TMS-FLT-024** - testPrintFloatingShips ✅ (Passou)
+- [x] **TMS-FLT-025** - testPrintShipsByCategoryThrowsExceptionForNull ✅ (Passou)
+- [x] **TMS-FLT-026** - testPrintShipsEmptyList ✅ (Passou)
+- [x] **TMS-FLT-027** - testPrintShipsPopulatedList ✅ (Passou)
+
+#### FrigateTest (52 ms) - ✅ Passou (11/11)
+- [x] **TMS-FRG-001** - testCreateFrigate ✅ (Passou)
+- [x] **TMS-FRG-002** - testInitialState ✅ (Passou)
+- [x] **TMS-FRG-003** - testNullBearingThrows ✅ (Passou)
+- [x] **TMS-FRG-004** - testNorthPositions ✅ (Passou)
+- [x] **TMS-FRG-005** - testSouthPositions ✅ (Passou)
+- [x] **TMS-FRG-006** - testEastPositions ✅ (Passou)
+- [x] **TMS-FRG-007** - testWestPositions ✅ (Passou)
+- [x] **TMS-FRG-008** - testOccupiesAllPositions ✅ (Passou)
+- [x] **TMS-FRG-009** - testDoesNotOccupyUnrelatedPosition ✅ (Passou)
+- [x] **TMS-FRG-010** - testSinking ✅ (Passou)
+- [x] **TMS-FRG-011** - testMissedShot ✅ (Passou)
+
+#### GalleonTest (3 ms) - ✅ Passou (11/11)
+- [x] **TMS-GAL-001** - testCreateGalleon ✅ (Passou)
+- [x] **TMS-GAL-002** - testInitialState ✅ (Passou)
+- [x] **TMS-GAL-003** - testNullBearingThrows ✅ (Passou)
+- [x] **TMS-GAL-004** - testNorthPositions ✅ (Passou)
+- [x] **TMS-GAL-005** - testSouthPositions ✅ (Passou)
+- [x] **TMS-GAL-006** - testEastPositions ✅ (Passou)
+- [x] **TMS-GAL-007** - testWestPositions ✅ (Passou)
+- [x] **TMS-GAL-008** - testOccupiesAllPositions ✅ (Passou)
+- [x] **TMS-GAL-009** - testDoesNotOccupyUnrelatedPosition ✅ (Passou)
+- [x] **TMS-GAL-010** - testSinking ✅ (Passou)
+- [x] **TMS-GAL-011** - testMissedShot ✅ (Passou)
+
+#### GameTest (10 ms) - ✅ Passou (12/12)
+- [x] **TMS-GAM-001** - invalidShot ✅ (Passou)
+- [x] **TMS-GAM-002** - repeatedShot ✅ (Passou)
+- [x] **TMS-GAM-003** - validShotNoShip ✅ (Passou)
+- [x] **TMS-GAM-004** - hitShipButNotSunk ✅ (Passou)
+- [x] **TMS-GAM-005** - hitShipAndSink ✅ (Passou)
+- [x] **TMS-GAM-006** - remainingShips ✅ (Passou)
+- [x] **TMS-GAM-007** - printValidShotsRuns ✅ (Passou)
+- [x] **TMS-GAM-008** - printFleetRuns ✅ (Passou)
+- [x] **TMS-GAM-009** - testInvalidRowNegative ✅ (Passou)
+- [x] **TMS-GAM-010** - testInvalidRowTooHigh ✅ (Passou)
+- [x] **TMS-GAM-011** - testInvalidColNegative ✅ (Passou)
+- [x] **TMS-GAM-012** - testInvalidColTooHigh ✅ (Passou)
+
+#### PositionTest (0 ms) - ✅ Passou (11/11)
+- [x] **TMS-POS-001** - testConstructorAndGetters ✅ (Passou)
+- [x] **TMS-POS-002** - testOccupy ✅ (Passou)
+- [x] **TMS-POS-003** - testShoot ✅ (Passou)
+- [x] **TMS-POS-004** - testToString ✅ (Passou)
+- [x] **TMS-POS-005** - testEqualsSameObject ✅ (Passou)
+- [x] **TMS-POS-006** - testEqualsDifferentTypeOrNull ✅ (Passou)
+- [x] **TMS-POS-007** - testEqualsDifferentCoordinates ✅ (Passou)
+- [x] **TMS-POS-008** - testEqualsSameCoordinates ✅ (Passou)
+- [x] **TMS-POS-009** - testHashCode ✅ (Passou)
+- [x] **TMS-POS-010** - testIsAdjacentToTrue ✅ (Passou)
+- [x] **TMS-POS-011** - testIsAdjacentToFalse ✅ (Passou)
+
+#### ShipTest (14 ms) - ✅ Passou (20/20)
+- [x] **TMS-SHP-001** - buildShipCreatesValidShip ✅ (Passou)
+- [x] **TMS-SHP-002** - getCategory ✅ (Passou)
+- [x] **TMS-SHP-003** - getPositions ✅ (Passou)
+- [x] **TMS-SHP-004** - getPosition ✅ (Passou)
+- [x] **TMS-SHP-005** - getBearing ✅ (Passou)
+- [x] **TMS-SHP-006** - stillFloatingWhenNew ✅ (Passou)
+- [x] **TMS-SHP-007** - getTopMostPos ✅ (Passou)
+- [x] **TMS-SHP-008** - getBottomMostPos ✅ (Passou)
+- [x] **TMS-SHP-009** - getLeftMostPos ✅ (Passou)
+- [x] **TMS-SHP-010** - getRightMostPos ✅ (Passou)
+- [x] **TMS-SHP-011** - occupies ✅ (Passou)
+- [x] **TMS-SHP-012** - tooCloseTo ✅ (Passou)
+- [x] **TMS-SHP-013** - testTooCloseTo ✅ (Passou)
+- [x] **TMS-SHP-014** - shoot ✅ (Passou)
+- [x] **TMS-SHP-015** - testToString ✅ (Passou)
+- [x] **TMS-SHP-016** - buildShipCreatesAllConcreteTypes ✅ (Passou)
+- [x] **TMS-SHP-017** - buildShipReturnsNullForUnknownKind ✅ (Passou)
+- [x] **TMS-SHP-018** - testConstructorAsserts ✅ (Passou)
+- [x] **TMS-SHP-019** - testMethodsAsserts ✅ (Passou)
+- [x] **TMS-SHP-020** - testGetTopMostPosUpdates ✅ (Passou)
+
+---
+
+### 👤 Execução B - Afonso Alves (@111157)
+*(Tempo Total: 135 ms | Relatório: `Test Results - 111157.html`)*
+
+#### BargeTest (< 1 ms) - ✅ Passou (4/4)
+- [x] **TMS-BAR-001** - testBargeSize ✅ (Passou)
+- [x] **TMS-BAR-002** - testBargePosition ✅ (Passou)
+- [x] **TMS-BAR-003** - testBargeStopsFloatingAfterShootOnPosition ✅ (Passou)
+- [x] **TMS-BAR-004** - testBargeStillFloatingIfShotMisses ✅ (Passou)
+
+#### CaravelTest (< 1 ms) - ✅ Passou (10/10)
+- [x] **TMS-CAR-001** - testCaravelSize ✅ (Passou)
+- [x] **TMS-CAR-002** - testCaravelPositionsNorth ✅ (Passou)
+- [x] **TMS-CAR-003** - testCaravelPositionsSouth ✅ (Passou)
+- [x] **TMS-CAR-004** - testCaravelPositionsEast ✅ (Passou)
+- [x] **TMS-CAR-005** - testCaravelPositionsWest ✅ (Passou)
+- [x] **TMS-CAR-006** - testCaravelNullBearingThrows ✅ (Passou)
+- [x] **TMS-CAR-007** - testCaravelStillFloatingAfterOneCorrectShot ✅ (Passou)
+- [x] **TMS-CAR-008** - testCaravelStopsFloatingAfterTwoCorrectShots ✅ (Passou)
+- [x] **TMS-CAR-009** - testCaravelStillFloatingIfShotMisses ✅ (Passou)
+- [x] **TMS-CAR-010** - testCaravelCategoryBearingAndInitialPosition ✅ (Passou)
+
+#### CarrackTest (< 1 ms) - ✅ Passou (10/10)
+- [x] **TMS-CRK-001** - testCarrackSize ✅ (Passou)
+- [x] **TMS-CRK-002** - testCarrackPositionsNorth ✅ (Passou)
+- [x] **TMS-CRK-003** - testCarrackPositionsSouth ✅ (Passou)
+- [x] **TMS-CRK-004** - testCarrackPositionsEast ✅ (Passou)
+- [x] **TMS-CRK-005** - testCarrackPositionsWest ✅ (Passou)
+- [x] **TMS-CRK-006** - testCarrackStillFloatingAfterOneHit ✅ (Passou)
+- [x] **TMS-CRK-007** - testCarrackStillFloatingAfterTwoHits ✅ (Passou)
+- [x] **TMS-CRK-008** - testCarrackStopsFloatingAfterThreeHits ✅ (Passou)
+- [x] **TMS-CRK-009** - testCarrackMissedShotStillFloating ✅ (Passou)
+- [x] **TMS-CRK-010** - testCarrackCategoryBearingInitialPosition ✅ (Passou)
+
+#### CompassTest (42 ms) - ✅ Passou (29/29)
+- [x] **TMS-CMP-001** - testCharToCompassNorth ✅ (Passou)
+- [x] **TMS-CMP-002** - testCharToCompassSouth ✅ (Passou)
+- [x] **TMS-CMP-003** - testCharToCompassEast ✅ (Passou)
+- [x] **TMS-CMP-004** - testCharToCompassWest ✅ (Passou)
+- [x] **TMS-CMP-005** - testCharToCompassUnknown ✅ (Passou)
+- [x] **TMS-CMP-006** - testCharToCompassParametrized ✅ (Passou)
+- [x] **TMS-CMP-007** - testNorthGetDirection ✅ (Passou)
+- [x] **TMS-CMP-008** - testSouthGetDirection ✅ (Passou)
+- [x] **TMS-CMP-009** - testEastGetDirection ✅ (Passou)
+- [x] **TMS-CMP-010** - testWestGetDirection ✅ (Passou)
+- [x] **TMS-CMP-011** - testUnknownGetDirection ✅ (Passou)
+- [x] **TMS-CMP-012** - testGetDirectionParametrized ✅ (Passou)
+- [x] **TMS-CMP-013** - testNorthToString ✅ (Passou)
+- [x] **TMS-CMP-014** - testSouthToString ✅ (Passou)
+- [x] **TMS-CMP-015** - testEastToString ✅ (Passou)
+- [x] **TMS-CMP-016** - testWestToString ✅ (Passou)
+- [x] **TMS-CMP-017** - testUnknownToString ✅ (Passou)
+- [x] **TMS-CMP-018** - testEnumValuesCount ✅ (Passou)
+- [x] **TMS-CMP-019** - testValueOfNorth ✅ (Passou)
+- [x] **TMS-CMP-020** - testValueOfInvalid ✅ (Passou)
+
+#### FleetTest (25 ms) - ✅ Passou (27/27)
+- [x] **TMS-FLT-001** - testCreateEmptyFleet ✅ (Passou)
+- [x] **TMS-FLT-002** - testGetShipsNotNull ✅ (Passou)
+- [x] **TMS-FLT-003** - testAddValidShipToEmptyFleet ✅ (Passou)
+- [x] **TMS-FLT-004** - testAddMultipleValidShips ✅ (Passou)
+- [x] **TMS-FLT-005** - testAddShipOutsideBoardNegative ✅ (Passou)
+- [x] **TMS-FLT-006** - testAddShipOutsideBoardOverLimit ✅ (Passou)
+- [x] **TMS-FLT-007** - testAddShipWithCollisionRisk ✅ (Passou)
+- [x] **TMS-FLT-008** - testFleetSizeLimit ✅ (Passou)
+- [x] **TMS-FLT-009** - testAddShipFailsDueToNegativeY ✅ (Passou)
+- [x] **TMS-FLT-010** - testAddShipFailsDueToPositiveY ✅ (Passou)
+- [x] **TMS-FLT-011** - testGetShipsLikeExistingCategory ✅ (Passou)
+- [x] **TMS-FLT-012** - testGetShipsLikeNonExistingCategory ✅ (Passou)
+- [x] **TMS-FLT-013** - testGetShipsLikeEmptyFleet ✅ (Passou)
+- [x] **TMS-FLT-014** - testAllShipsFloatingInitially ✅ (Passou)
+- [x] **TMS-FLT-015** - testGetFloatingShipsEmptyFleet ✅ (Passou)
+- [x] **TMS-FLT-016** - testShipsNotFloatingAreFiltered ✅ (Passou)
+- [x] **TMS-FLT-017** - testShipAtOccupiedPosition ✅ (Passou)
+- [x] **TMS-FLT-018** - testShipAtEmptyPosition ✅ (Passou)
+- [x] **TMS-FLT-019** - testShipAtEmptyFleet ✅ (Passou)
+- [x] **TMS-FLT-020** - testShipAtWithMultipleShips ✅ (Passou)
+- [x] **TMS-FLT-021** - testPrintStatusEmptyFleet ✅ (Passou)
+- [x] **TMS-FLT-022** - testPrintStatusPopulatedFleet ✅ (Passou)
+- [x] **TMS-FLT-023** - testPrintShipsByCategory ✅ (Passou)
+- [x] **TMS-FLT-024** - testPrintFloatingShips ✅ (Passou)
+- [x] **TMS-FLT-025** - testPrintShipsByCategoryThrowsExceptionForNull ✅ (Passou)
+- [x] **TMS-FLT-026** - testPrintShipsEmptyList ✅ (Passou)
+- [x] **TMS-FLT-027** - testPrintShipsPopulatedList ✅ (Passou)
+
+#### FrigateTest (44 ms) - ✅ Passou (11/11)
+- [x] **TMS-FRG-001** - testCreateFrigate ✅ (Passou)
+- [x] **TMS-FRG-002** - testInitialState ✅ (Passou)
+- [x] **TMS-FRG-003** - testNullBearingThrows ✅ (Passou)
+- [x] **TMS-FRG-004** - testNorthPositions ✅ (Passou)
+- [x] **TMS-FRG-005** - testSouthPositions ✅ (Passou)
+- [x] **TMS-FRG-006** - testEastPositions ✅ (Passou)
+- [x] **TMS-FRG-007** - testWestPositions ✅ (Passou)
+- [x] **TMS-FRG-008** - testOccupiesAllPositions ✅ (Passou)
+- [x] **TMS-FRG-009** - testDoesNotOccupyUnrelatedPosition ✅ (Passou)
+- [x] **TMS-FRG-010** - testSinking ✅ (Passou)
+- [x] **TMS-FRG-011** - testMissedShot ✅ (Passou)
+
+#### GalleonTest (6 ms) - ✅ Passou (11/11)
+- [x] **TMS-GAL-001** - testCreateGalleon ✅ (Passou)
+- [x] **TMS-GAL-002** - testInitialState ✅ (Passou)
+- [x] **TMS-GAL-003** - testNullBearingThrows ✅ (Passou)
+- [x] **TMS-GAL-004** - testNorthPositions ✅ (Passou)
+- [x] **TMS-GAL-005** - testSouthPositions ✅ (Passou)
+- [x] **TMS-GAL-006** - testEastPositions ✅ (Passou)
+- [x] **TMS-GAL-007** - testWestPositions ✅ (Passou)
+- [x] **TMS-GAL-008** - testOccupiesAllPositions ✅ (Passou)
+- [x] **TMS-GAL-009** - testDoesNotOccupyUnrelatedPosition ✅ (Passou)
+- [x] **TMS-GAL-010** - testSinking ✅ (Passou)
+- [x] **TMS-GAL-011** - testMissedShot ✅ (Passou)
+
+#### GameTest (12 ms) - ✅ Passou (12/12)
+- [x] **TMS-GAM-001** - invalidShot ✅ (Passou)
+- [x] **TMS-GAM-002** - repeatedShot ✅ (Passou)
+- [x] **TMS-GAM-003** - validShotNoShip ✅ (Passou)
+- [x] **TMS-GAM-004** - hitShipButNotSunk ✅ (Passou)
+- [x] **TMS-GAM-005** - hitShipAndSink ✅ (Passou)
+- [x] **TMS-GAM-006** - remainingShips ✅ (Passou)
+- [x] **TMS-GAM-007** - printValidShotsRuns ✅ (Passou)
+- [x] **TMS-GAM-008** - printFleetRuns ✅ (Passou)
+- [x] **TMS-GAM-009** - testInvalidRowNegative ✅ (Passou)
+- [x] **TMS-GAM-010** - testInvalidRowTooHigh ✅ (Passou)
+- [x] **TMS-GAM-011** - testInvalidColNegative ✅ (Passou)
+- [x] **TMS-GAM-012** - testInvalidColTooHigh ✅ (Passou)
+
+#### PositionTest (< 1 ms) - ✅ Passou (11/11)
+- [x] **TMS-POS-001** - testConstructorAndGetters ✅ (Passou)
+- [x] **TMS-POS-002** - testOccupy ✅ (Passou)
+- [x] **TMS-POS-003** - testShoot ✅ (Passou)
+- [x] **TMS-POS-004** - testToString ✅ (Passou)
+- [x] **TMS-POS-005** - testEqualsSameObject ✅ (Passou)
+- [x] **TMS-POS-006** - testEqualsDifferentTypeOrNull ✅ (Passou)
+- [x] **TMS-POS-007** - testEqualsDifferentCoordinates ✅ (Passou)
+- [x] **TMS-POS-008** - testEqualsSameCoordinates ✅ (Passou)
+- [x] **TMS-POS-009** - testHashCode ✅ (Passou)
+- [x] **TMS-POS-010** - testIsAdjacentToTrue ✅ (Passou)
+- [x] **TMS-POS-011** - testIsAdjacentToFalse ✅ (Passou)
+
+#### ShipTest (6 ms) - ✅ Passou (20/20)
+- [x] **TMS-SHP-001** - buildShipCreatesValidShip ✅ (Passou)
+- [x] **TMS-SHP-002** - getCategory ✅ (Passou)
+- [x] **TMS-SHP-003** - getPositions ✅ (Passou)
+- [x] **TMS-SHP-004** - getPosition ✅ (Passou)
+- [x] **TMS-SHP-005** - getBearing ✅ (Passou)
+- [x] **TMS-SHP-006** - stillFloatingWhenNew ✅ (Passou)
+- [x] **TMS-SHP-007** - getTopMostPos ✅ (Passou)
+- [x] **TMS-SHP-008** - getBottomMostPos ✅ (Passou)
+- [x] **TMS-SHP-009** - getLeftMostPos ✅ (Passou)
+- [x] **TMS-SHP-010** - getRightMostPos ✅ (Passou)
+- [x] **TMS-SHP-011** - occupies ✅ (Passou)
+- [x] **TMS-SHP-012** - tooCloseTo ✅ (Passou)
+- [x] **TMS-SHP-013** - testTooCloseTo ✅ (Passou)
+- [x] **TMS-SHP-014** - shoot ✅ (Passou)
+- [x] **TMS-SHP-015** - testToString ✅ (Passou)
+- [x] **TMS-SHP-016** - buildShipCreatesAllConcreteTypes ✅ (Passou)
+- [x] **TMS-SHP-017** - buildShipReturnsNullForUnknownKind ✅ (Passou)
+- [x] **TMS-SHP-018** - testConstructorAsserts ✅ (Passou)
+- [x] **TMS-SHP-019** - testMethodsAsserts ✅ (Passou)
+- [x] **TMS-SHP-020** - testGetTopMostPosUpdates ✅ (Passou)
+
+---
+
+### 👤 Execução C - Rui Carvalho (@111729)
+*(Tempo Total: 165 ms | Relatório: `Test Results - 111729.html`)*
+
+#### BargeTest (< 1 ms) - ✅ Passou (4/4)
+- [x] **TMS-BAR-001** - testBargeSize ✅ (Passou)
+- [x] **TMS-BAR-002** - testBargePosition ✅ (Passou)
+- [x] **TMS-BAR-003** - testBargeStopsFloatingAfterShootOnPosition ✅ (Passou)
+- [x] **TMS-BAR-004** - testBargeStillFloatingIfShotMisses ✅ (Passou)
+
+#### CaravelTest (1 ms) - ✅ Passou (10/10)
+- [x] **TMS-CAR-001** - testCaravelSize ✅ (Passou)
+- [x] **TMS-CAR-002** - testCaravelPositionsNorth ✅ (Passou)
+- [x] **TMS-CAR-003** - testCaravelPositionsSouth ✅ (Passou)
+- [x] **TMS-CAR-004** - testCaravelPositionsEast ✅ (Passou)
+- [x] **TMS-CAR-005** - testCaravelPositionsWest ✅ (Passou)
+- [x] **TMS-CAR-006** - testCaravelNullBearingThrows ✅ (Passou)
+- [x] **TMS-CAR-007** - testCaravelStillFloatingAfterOneCorrectShot ✅ (Passou)
+- [x] **TMS-CAR-008** - testCaravelStopsFloatingAfterTwoCorrectShots ✅ (Passou)
+- [x] **TMS-CAR-009** - testCaravelStillFloatingIfShotMisses ✅ (Passou)
+- [x] **TMS-CAR-010** - testCaravelCategoryBearingAndInitialPosition ✅ (Passou)
+
+#### CarrackTest (< 1 ms) - ✅ Passou (10/10)
+- [x] **TMS-CRK-001** - testCarrackSize ✅ (Passou)
+- [x] **TMS-CRK-002** - testCarrackPositionsNorth ✅ (Passou)
+- [x] **TMS-CRK-003** - testCarrackPositionsSouth ✅ (Passou)
+- [x] **TMS-CRK-004** - testCarrackPositionsEast ✅ (Passou)
+- [x] **TMS-CRK-005** - testCarrackPositionsWest ✅ (Passou)
+- [x] **TMS-CRK-006** - testCarrackStillFloatingAfterOneHit ✅ (Passou)
+- [x] **TMS-CRK-007** - testCarrackStillFloatingAfterTwoHits ✅ (Passou)
+- [x] **TMS-CRK-008** - testCarrackStopsFloatingAfterThreeHits ✅ (Passou)
+- [x] **TMS-CRK-009** - testCarrackMissedShotStillFloating ✅ (Passou)
+- [x] **TMS-CRK-010** - testCarrackCategoryBearingInitialPosition ✅ (Passou)
+
+#### CompassTest (28 ms) - ✅ Passou (29/29)
+- [x] **TMS-CMP-001** - testCharToCompassNorth ✅ (Passou)
+- [x] **TMS-CMP-002** - testCharToCompassSouth ✅ (Passou)
+- [x] **TMS-CMP-003** - testCharToCompassEast ✅ (Passou)
+- [x] **TMS-CMP-004** - testCharToCompassWest ✅ (Passou)
+- [x] **TMS-CMP-005** - testCharToCompassUnknown ✅ (Passou)
+- [x] **TMS-CMP-006** - testCharToCompassParametrized ✅ (Passou)
+- [x] **TMS-CMP-007** - testNorthGetDirection ✅ (Passou)
+- [x] **TMS-CMP-008** - testSouthGetDirection ✅ (Passou)
+- [x] **TMS-CMP-009** - testEastGetDirection ✅ (Passou)
+- [x] **TMS-CMP-010** - testWestGetDirection ✅ (Passou)
+- [x] **TMS-CMP-011** - testUnknownGetDirection ✅ (Passou)
+- [x] **TMS-CMP-012** - testGetDirectionParametrized ✅ (Passou)
+- [x] **TMS-CMP-013** - testNorthToString ✅ (Passou)
+- [x] **TMS-CMP-014** - testSouthToString ✅ (Passou)
+- [x] **TMS-CMP-015** - testEastToString ✅ (Passou)
+- [x] **TMS-CMP-016** - testWestToString ✅ (Passou)
+- [x] **TMS-CMP-017** - testUnknownToString ✅ (Passou)
+- [x] **TMS-CMP-018** - testEnumValuesCount ✅ (Passou)
+- [x] **TMS-CMP-019** - testValueOfNorth ✅ (Passou)
+- [x] **TMS-CMP-020** - testValueOfInvalid ✅ (Passou)
+
+#### FleetTest (34 ms) - ✅ Passou (27/27)
+- [x] **TMS-FLT-001** - testCreateEmptyFleet ✅ (Passou)
+- [x] **TMS-FLT-002** - testGetShipsNotNull ✅ (Passou)
+- [x] **TMS-FLT-003** - testAddValidShipToEmptyFleet ✅ (Passou)
+- [x] **TMS-FLT-004** - testAddMultipleValidShips ✅ (Passou)
+- [x] **TMS-FLT-005** - testAddShipOutsideBoardNegative ✅ (Passou)
+- [x] **TMS-FLT-006** - testAddShipOutsideBoardOverLimit ✅ (Passou)
+- [x] **TMS-FLT-007** - testAddShipWithCollisionRisk ✅ (Passou)
+- [x] **TMS-FLT-008** - testFleetSizeLimit ✅ (Passou)
+- [x] **TMS-FLT-009** - testAddShipFailsDueToNegativeY ✅ (Passou)
+- [x] **TMS-FLT-010** - testAddShipFailsDueToPositiveY ✅ (Passou)
+- [x] **TMS-FLT-011** - testGetShipsLikeExistingCategory ✅ (Passou)
+- [x] **TMS-FLT-012** - testGetShipsLikeNonExistingCategory ✅ (Passou)
+- [x] **TMS-FLT-013** - testGetShipsLikeEmptyFleet ✅ (Passou)
+- [x] **TMS-FLT-014** - testAllShipsFloatingInitially ✅ (Passou)
+- [x] **TMS-FLT-015** - testGetFloatingShipsEmptyFleet ✅ (Passou)
+- [x] **TMS-FLT-016** - testShipsNotFloatingAreFiltered ✅ (Passou)
+- [x] **TMS-FLT-017** - testShipAtOccupiedPosition ✅ (Passou)
+- [x] **TMS-FLT-018** - testShipAtEmptyPosition ✅ (Passou)
+- [x] **TMS-FLT-019** - testShipAtEmptyFleet ✅ (Passou)
+- [x] **TMS-FLT-020** - testShipAtWithMultipleShips ✅ (Passou)
+- [x] **TMS-FLT-021** - testPrintStatusEmptyFleet ✅ (Passou)
+- [x] **TMS-FLT-022** - testPrintStatusPopulatedFleet ✅ (Passou)
+- [x] **TMS-FLT-023** - testPrintShipsByCategory ✅ (Passou)
+- [x] **TMS-FLT-024** - testPrintFloatingShips ✅ (Passou)
+- [x] **TMS-FLT-025** - testPrintShipsByCategoryThrowsExceptionForNull ✅ (Passou)
+- [x] **TMS-FLT-026** - testPrintShipsEmptyList ✅ (Passou)
+- [x] **TMS-FLT-027** - testPrintShipsPopulatedList ✅ (Passou)
+
+#### FrigateTest (62 ms) - ✅ Passou (11/11)
+- [x] **TMS-FRG-001** - testCreateFrigate ✅ (Passou)
+- [x] **TMS-FRG-002** - testInitialState ✅ (Passou)
+- [x] **TMS-FRG-003** - testNullBearingThrows ✅ (Passou)
+- [x] **TMS-FRG-004** - testNorthPositions ✅ (Passou)
+- [x] **TMS-FRG-005** - testSouthPositions ✅ (Passou)
+- [x] **TMS-FRG-006** - testEastPositions ✅ (Passou)
+- [x] **TMS-FRG-007** - testWestPositions ✅ (Passou)
+- [x] **TMS-FRG-008** - testOccupiesAllPositions ✅ (Passou)
+- [x] **TMS-FRG-009** - testDoesNotOccupyUnrelatedPosition ✅ (Passou)
+- [x] **TMS-FRG-010** - testSinking ✅ (Passou)
+- [x] **TMS-FRG-011** - testMissedShot ✅ (Passou)
+
+#### GalleonTest (4 ms) - ✅ Passou (11/11)
+- [x] **TMS-GAL-001** - testCreateGalleon ✅ (Passou)
+- [x] **TMS-GAL-002** - testInitialState ✅ (Passou)
+- [x] **TMS-GAL-003** - testNullBearingThrows ✅ (Passou)
+- [x] **TMS-GAL-004** - testNorthPositions ✅ (Passou)
+- [x] **TMS-GAL-005** - testSouthPositions ✅ (Passou)
+- [x] **TMS-GAL-006** - testEastPositions ✅ (Passou)
+- [x] **TMS-GAL-007** - testWestPositions ✅ (Passou)
+- [x] **TMS-GAL-008** - testOccupiesAllPositions ✅ (Passou)
+- [x] **TMS-GAL-009** - testDoesNotOccupyUnrelatedPosition ✅ (Passou)
+- [x] **TMS-GAL-010** - testSinking ✅ (Passou)
+- [x] **TMS-GAL-011** - testMissedShot ✅ (Passou)
+
+#### GameTest (12 ms) - ✅ Passou (12/12)
+- [x] **TMS-GAM-001** - invalidShot ✅ (Passou)
+- [x] **TMS-GAM-002** - repeatedShot ✅ (Passou)
+- [x] **TMS-GAM-003** - validShotNoShip ✅ (Passou)
+- [x] **TMS-GAM-004** - hitShipButNotSunk ✅ (Passou)
+- [x] **TMS-GAM-005** - hitShipAndSink ✅ (Passou)
+- [x] **TMS-GAM-006** - remainingShips ✅ (Passou)
+- [x] **TMS-GAM-007** - printValidShotsRuns ✅ (Passou)
+- [x] **TMS-GAM-008** - printFleetRuns ✅ (Passou)
+- [x] **TMS-GAM-009** - testInvalidRowNegative ✅ (Passou)
+- [x] **TMS-GAM-010** - testInvalidRowTooHigh ✅ (Passou)
+- [x] **TMS-GAM-011** - testInvalidColNegative ✅ (Passou)
+- [x] **TMS-GAM-012** - testInvalidColTooHigh ✅ (Passou)
+
+#### PositionTest (< 1 ms) - ✅ Passou (11/11)
+- [x] **TMS-POS-001** - testConstructorAndGetters ✅ (Passou)
+- [x] **TMS-POS-002** - testOccupy ✅ (Passou)
+- [x] **TMS-POS-003** - testShoot ✅ (Passou)
+- [x] **TMS-POS-004** - testToString ✅ (Passou)
+- [x] **TMS-POS-005** - testEqualsSameObject ✅ (Passou)
+- [x] **TMS-POS-006** - testEqualsDifferentTypeOrNull ✅ (Passou)
+- [x] **TMS-POS-007** - testEqualsDifferentCoordinates ✅ (Passou)
+- [x] **TMS-POS-008** - testEqualsSameCoordinates ✅ (Passou)
+- [x] **TMS-POS-009** - testHashCode ✅ (Passou)
+- [x] **TMS-POS-010** - testIsAdjacentToTrue ✅ (Passou)
+- [x] **TMS-POS-011** - testIsAdjacentToFalse ✅ (Passou)
+
+#### ShipTest (7 ms) - ✅ Passou (20/20)
+- [x] **TMS-SHP-001** - buildShipCreatesValidShip ✅ (Passou)
+- [x] **TMS-SHP-002** - getCategory ✅ (Passou)
+- [x] **TMS-SHP-003** - getPositions ✅ (Passou)
+- [x] **TMS-SHP-004** - getPosition ✅ (Passou)
+- [x] **TMS-SHP-005** - getBearing ✅ (Passou)
+- [x] **TMS-SHP-006** - stillFloatingWhenNew ✅ (Passou)
+- [x] **TMS-SHP-007** - getTopMostPos ✅ (Passou)
+- [x] **TMS-SHP-008** - getBottomMostPos ✅ (Passou)
+- [x] **TMS-SHP-009** - getLeftMostPos ✅ (Passou)
+- [x] **TMS-SHP-010** - getRightMostPos ✅ (Passou)
+- [x] **TMS-SHP-011** - occupies ✅ (Passou)
+- [x] **TMS-SHP-012** - tooCloseTo ✅ (Passou)
+- [x] **TMS-SHP-013** - testTooCloseTo ✅ (Passou)
+- [x] **TMS-SHP-014** - shoot ✅ (Passou)
+- [x] **TMS-SHP-015** - testToString ✅ (Passou)
+- [x] **TMS-SHP-016** - buildShipCreatesAllConcreteTypes ✅ (Passou)
+- [x] **TMS-SHP-017** - buildShipReturnsNullForUnknownKind ✅ (Passou)
+- [x] **TMS-SHP-018** - testConstructorAsserts ✅ (Passou)
+- [x] **TMS-SHP-019** - testMethodsAsserts ✅ (Passou)
+- [x] **TMS-SHP-020** - testGetTopMostPosUpdates ✅ (Passou)
+
+---
+
+## 3. Análise Técnica e Detalhes do Processo
+
+### Análise de Cobertura Detalhada
+Abaixo apresenta-se o estado final das classes principais após a execução da bateria de testes:
+
+* **Cobertura Completa (100% Branch/Line):**
+    * ✅ `Barge`, `Carrack`, `Frigate`
+    * ✅ `Position`, `Compass`
+    * ✅ `Ship` (Classe abstrata)
+    * ✅ Interfaces (`IFleet`, `IGame`, `IPosition`, `IShip`)
+
+* **Cobertura Alta (>90% Branch):**
+    * ⚠️ `Fleet` (97%)
+    * ⚠️ `Game` (96%)
+    * ⚠️ `Galleon` (93%)
+    * ⚠️ `Caravel` (90%)
+
+* **Classes Excluídas:**
+    * **Tasks:** 0% de cobertura (excluída por design, visto tratar-se de interação direta com o utilizador via consola).
+    * **App:** 0% de cobertura (classe de arranque `main`).
+
+
+### Critérios de Aceitação
+- [x] Todos os testes unitários executados com sucesso (145/145).
+- [x] Taxa de sucesso de 100%.
+- [x] Cobertura global de ramos ~98% (Atingido o objetivo de "cobertura quase total").
+- [x] Identificadores TMS mapeados corretamente para cada teste.
+- [x] Tempo de execução total inferior a 1 segundo.
+
+---
+
+## 4. Resumo Final da Release
 - **Total de Testes:** 145
-- **Executados:** 145
-- **Passou:** 145
-- **Falhados:** 0
-- **Ignorados:** 0
 - **Taxa de Sucesso:** 100%
-- **Tempo Total:** 6.824s
-
-### Cobertura de Código
-- **Branch Coverage:** 76% (171/223)
-- **Line Coverage:** 73% (245/333)
-- **Method Coverage:** 89% (85/95)
-- **Class Coverage:** 88% (15/17)
-
-### Cobertura por Pacote
-- **iscteiul.ista.battleship:** 76% branch, 74% line, 90% method
-- **Classes com 100% cobertura:**
-    - Barge: 100% branch 
-    - Carrack: 100% branch 
-    - Compass: 100% branch 
-    - Fleet: 97% branch
-    - Frigate: 100% branch 
-    - IFleet: 100% branch
-    - IGame: 100% branch
-    - IPosition: 100% branch
-    - IShip: 100% branch
-    - Position: 100% branch
-    - Ship: 100% branch
-
-
----
-
-## Detalhes por Classe de Teste
-
-### BargeTest (TMS-BAR-001 a TMS-BAR-004) - Realizado por @111206
-- **Status:** ✅ Passou
-- **Testes:** 4/4
-- **Duração:** 66 ms
-- **Cobertura:** 100% branch
-- **Notas:** Todos os testes de Barge passaram. Cobertura completa alcançada.
-
-### CaravelTest (TMS-CAR-001 a TMS-CAR-010) - Realizado por @111206
-- **Status:** ✅ Passou
-- **Testes:** 10/10
-- **Duração:** 29 ms
-- **Cobertura:** 90% branch (9/10)
-- **Notas:** Validações de orientação funcionando. 1 branch não coberto.
-
-### CarrackTest (TMS-CRK-001 a TMS-CRK-010) - Realizado por @111206
-- **Status:** ✅ Passou
-- **Testes:** 10/10
-- **Duração:** 25 ms
-- **Cobertura:** 100% branch (8/8)
-- **Notas:** Testes de afundamento com 3 hits validados. Cobertura completa.
-
-### CompassTest (TMS-CMP-001 a TMS-CMP-020)
-- **Status:** ✅ Passou
-- **Testes:** 29/29 (inclui testes nested e parametrizados)
-- **Duração:** 307 ms
-- **Cobertura:** 100% branch (4/4)
-- **Notas:** Testes parametrizados executados com sucesso. Cobertura completa do enum.
-
-### FleetTest (TMS-FLT-001 a TMS-FLT-027)
-- **Status:** ✅ Passou
-- **Testes:** 27/27 (distribuídos em nested classes)
-- **Duração:** 95 ms
-- **Cobertura:** 97% branch (33/34)
-- **Notas:** Validações de limites do tabuleiro funcionando. 1 branch não coberto.
-
-### FrigateTest (TMS-FRG-001 a TMS-FRG-011)
-- **Status:** ✅ Passou
-- **Testes:** 11/11
-- **Duração:** 41 ms
-- **Cobertura:** 100% branch (8/8)
-- **Notas:** Fragata com 4 posições testada corretamente. Cobertura completa.
-
-### GalleonTest (TMS-GAL-001 a TMS-GAL-011)
-- **Status:** ✅ Passou
-- **Testes:** 11/11
-- **Duração:** 60 ms
-- **Cobertura:** 93% branch (15/16)
-- **Notas:** Forma em T do Galeão validada em todas orientações. 1 branch não coberto.
-
-### GameTest (TMS-GAM-001 a TMS-GAM-012)
-- **Status:** ✅ Passou
-- **Testes:** 12/12
-- **Duração:** 75 ms
-- **Cobertura:** 96% branch (31/32)
-- **Notas:** Lógica de jogo e contadores funcionando. Mock objects utilizados com sucesso.
-
-### PositionTest (TMS-POS-001 a TMS-POS-011)
-- **Status:** ✅ Passou
-- **Testes:** 11/11
-- **Duração:** 30 ms
-- **Cobertura:** 100% branch (12/12)
-- **Notas:** Validações de adjacência e igualdade corretas. Cobertura completa.
-
-### ShipTest (TMS-SHP-001 a TMS-SHP-020)
-- **Status:** ✅ Passou
-- **Testes:** 20/20
-- **Duração:** 33 ms
-- **Cobertura:** 100% branch (51/51)
-- **Notas:** Factory method buildShip validado para todos os tipos. Cobertura completa.
-
----
-
-## Problemas Identificados
-
-### Issues Críticos
-*Nenhum issue crítico identificado*
-
-### Issues Menores
-1. **Cobertura não completa em algumas classes:**
-    - CaravelTest: 1 branch não coberto (90%)
-    - GalleonTest: 1 branch não coberto (93%)
-    - FleetTest: 1 branch não coberto (97%)
-    - GameTest: 1 branch não coberto (96%)
-
-### Observações
-- Cobertura geral de 76% é boa, mas pode ser melhorada
-- Tasks.java excluído corretamente (0% cobertura)
-- Todos os 145 testes executam rapidamente (< 7s total)
-- Código bem estruturado e testável
-- Uso adequado de nested classes e testes parametrizados
-- @111206 ajudou a melhorar a cobertura do Frigate e do Galleon
----
-
-## Comandos Executados
-
-```bash
-# Executar testes com cobertura (via Maven lifecycle no IntelliJ)
-mvn clean test
-
-# Resultado da execução
-Tests run: 145, Failures: 0, Errors: 0, Skipped: 0
-BUILD SUCCESS
-Total time: 6.824 s
-```
-
-
----
-
-## Artefatos Gerados
-
-- ✅ Relatório de cobertura IntelliJ: Visualização inline no IDE
-- ✅ Relatório JaCoCo (a gerar): `target/site/jacoco/jacoco.xml`
-- ✅ Relatório Surefire: `target/surefire-reports/`
-- ✅ Logs de execução: `target/surefire-reports/*.txt`
-- ✅ Reports de teste individuais por classe
-
----
-
-## Análise de Cobertura Detalhada
-
-### Classes com Cobertura Completa (100% Branch)
-1. Barge - 100% (0/0 branches missed)
-2. Carrack - 100% (8/8 branches covered)
-3. Compass - 100% (4/4 branches covered)
-4. Frigate - 100% (8/8 branches covered)
-5. Position - 100% (12/12 branches covered)
-6. Ship - 100% (51/51 branches covered)
-7. Interfaces (IFleet, IGame, IPosition, IShip) - 100%
-
-### Classes com Alta Cobertura (>90%)
-1. Fleet - 97% (33/34 branches)
-2. Game - 96% (31/32 branches)
-3. Galleon - 93% (15/16 branches)
-
-### Classes com Boa Cobertura (>80%)
-1. Caravel - 90% (9/10 branches)
-
-### Classes Excluídas (Por Design)
-1. Tasks - 0% (80 linhas não cobertas - interação com utilizador)
-2. App - 0% (2 linhas não cobertas - main class)
-
----
-
-## Critérios de Aceitação
-
-- ✅ Todos os testes unitários executados com sucesso (145/145)
-- ✅ Taxa de sucesso de 100%
-- ✅ Cobertura de branches: 76% (objetivo: próximo de 100% para classes principais)
-- ✅ Classes principais com alta cobertura (>90%)
-- ✅ Classe Tasks corretamente excluída (0% cobertura)
-- ✅ Identificadores TMS adicionados a todos os testes
-- ✅ Documentação TMS atualizada
-- ✅ Tempo de execução aceitável (< 7s)
-
-**Status de Aprovação:** ✅ RECOMENDADO PARA MERGE
-
-**Observação:** A cobertura de 76% é aceitável considerando que:
-- Classes principais têm >90% de cobertura
-- Tasks.java está corretamente excluído
-- 100% dos testes passam
-- Código está bem testado nas áreas críticas
-
----
-
-
-### Ações Não Necessárias
-- Tasks.java não precisa de cobertura (conforme especificação)
-- App.java não precisa de cobertura (main class)
-
----
-
-
-## Métricas de Qualidade
-
-| Métrica | Valor | Status |
-|---------|-------|--------|
-| Testes Executados | 145/145 | ✅ |
-| Taxa de Sucesso | 100% | ✅ |
-| Branch Coverage | 76% | ✅ |
-| Line Coverage | 73% | ✅ |
-| Method Coverage | 89% | ✅ |
-| Class Coverage | 88% | ✅ |
-| Tempo de Execução | 6.824s | ✅ |
-| Testes Falhados | 0 | ✅ |
-
----
+- **Cobertura Final:** 98% (Branch) / 96% (Line)
+- **Estado:** ✅ Aprovada para Entrega
 
 ## Tags
-#test-run #release #coverage #unit-tests #battleship #tms-run-001 #approved #145-tests #100-pass-rate #76-branch-coverage
+#release-1.0 #test-run #coverage-98 #unit-tests
